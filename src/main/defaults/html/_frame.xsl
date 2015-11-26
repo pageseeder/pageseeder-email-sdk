@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!--
   Define common frame for the templates.
+  
+  Note: There is no usually reason to modify this module.
 -->
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -16,6 +18,9 @@
 
 <!-- Legacy templates are defined here -->
 <xsl:import href="_legacy.xsl"/>
+
+<!-- Legacy templates are defined here -->
+<xsl:import href="_custom.xsl"/>
 
 <!-- 
   Default template for all notifications.
@@ -58,46 +63,6 @@
   By default, no content for the metadata, banner or content.
 -->
 <xsl:template match="notification" mode="meta banner content"/>
-
-<!--
-  Default header template
--->
-<xsl:template match="notification" mode="header">
-<table width="100%" style="width:100%; border-spacing:0; border-collapse: collapse">
-  <tr>
-    <td style="border-spacing:0">
-      <!-- file:///C:/PageSeeder/default/webapp/weborganic/layout/default/images/backgrounds/emailheader.png -->
-      <a href="{@hosturl}/" class="header-pslogo" title="PageSeeder"
-      ><img src="emailheader.png" border="0" alt="" /></a>
-    </td>
-    <td style="border-spacing:0" align="right">
-      <xsl:if test="group and not(group/@name = 'admin') or comment/context/group">
-        <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-        <h4 class="header-title"><xsl:value-of select="$group/@name"/></h4>
-      </xsl:if>
-    </td>
-  </tr>
-</table>
-</xsl:template>
-
-<!--
- Default footer template
--->
-<xsl:template match="notification" mode="footer">
-<xsl:choose>
-  <xsl:when test="group and not(group/@name = 'admin') or comment/context/group">
-    <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-    <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
-    <p>If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/page/{$group/@name}/preferences/mygroups">your subscription options</a></p>
-  </xsl:when>
-  <xsl:otherwise>
-    <p>This email has been sent to you because you have an account on 
-    <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a></p>
-  </xsl:otherwise>
-</xsl:choose>
-</xsl:template>
-
 
 <!-- ====================================================================== -->
 <!-- Wrappers -->

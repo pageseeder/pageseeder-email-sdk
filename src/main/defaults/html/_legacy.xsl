@@ -2,16 +2,12 @@
 <!--
   This stylesheet provides a set of common templates and functions for use by the email templates.
 
-  @author Christophe Lauret
-  @version 24 May 2012
+  Note: This module defines legacy templates that should be gradually replaced.
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         exclude-result-prefixes="f">
-
-<!-- Base URL for images -->
-<xsl:variable name="images-url"  select="concat('https://ps.pageseeder.com/ps', '/weborganic/email')" />
 
 <!-- ===================================================================================== -->
 <!-- Enclosed Message                                                                      -->
