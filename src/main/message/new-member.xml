@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for new member notification.
+-->
+<notifications>
+  <notification template="new-member" description="New member" password="as46g2kvqd" subject="PageSeeder groups login details">
+    <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="activated">
+      <fullname>John Jones</fullname>
+    </member>
+  </notification>
+  <notification template="new-member" description="New unactivated member"
+                password="as46g2kvqd" key="sdf21asdf571gf7dfg2"
+                subject="PageSeeder groups login details">
+    <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="unactivated">
+      <fullname>John Jones</fullname>
+    </member>
+  </notification>
+</notifications>

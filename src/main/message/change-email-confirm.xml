@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for confirmation notification when changing email.
+-->
+<notifications>
+  <notification template="change-email-confirm" description="Change email confirmation"
+    newemail="jjones@new-example.org" key="sdf21asdf571gf7dfg2" subject="PageSeeder email change confirmation">
+    <member id="12" firstname="John" lastname="Jones"
+            email="jjones@example.org" username="jjones">
+      <fullname>John Jones</fullname>
+    </member>
+  </notification>
+</notifications>

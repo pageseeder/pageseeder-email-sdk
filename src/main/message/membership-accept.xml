@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for membership moderation notification.
+-->
+<notifications>
+  <notification template="membership-accept" description="Membership moderation" subject="[acme-test] Group registration request">
+    <membership id="123" email-listed="true" notification="immediate" status="moderated" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" />
+    </membership>
+  </notification>
+</notifications>

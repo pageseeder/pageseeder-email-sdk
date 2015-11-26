@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for Out of Office warning email.
+-->
+<notifications>
+  <notification template="out-of-office-warning" description="Out of Office warning"
+                subject="WARNING: Out Of Office detected">
+    <outofoffice string="out of the office" limit="2" />
+    <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Currently out of the office</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">I am currently on leave and will be back on Monday 30 December 2018. I will not have access to my e-mails.</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+  </notification>
+</notifications>

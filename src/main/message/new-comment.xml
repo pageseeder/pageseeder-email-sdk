@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for new comment notification.
+-->
+<notifications>
+
+  <!-- New comment -->
+  <notification template="new-comment" description="New comment" announcement="false" taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="123" discussionid="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">Sesame opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+      <labels>surprising,story</labels>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+
+  <!-- Reply to a comment -->
+  <notification template="new-comment" description="Reply comment" announcement="false"
+                taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="124" discussionid="123" contentrole="Comment" created="2012-03-09T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="13" firstname="Sally" surname="Jones" email="sjones@example.org" username="sjones">
+        <fullname>Sally Jones</fullname>
+      </author>
+      <content type="text/plain">What was inside?</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+
+  <!-- Comment with attachments -->
+  <notification template="new-comment" description="New comment with attachments"
+                announcement="false" taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="125" discussionid="125" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">Sesame opened the door</content>
+      <attachment>
+        <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
+           decodedpath="/ps/project/group/folder/file.psml" external="false"
+           mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+          <displaytitle>My document</displaytitle>
+          <description>This document is for testing purposes</description>
+          <labels>test,example</labels>
+        </uri>
+      </attachment>
+      <attachment>
+        <uri id="457" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/subfolder/image.png"
+           decodedpath="/ps/project/group/folder/subfolder/image.png" external="false"
+           mediatype="image/png" created="2012-01-18T17:35:00+10:00">
+          <displaytitle>An image</displaytitle>
+        </uri>
+      </attachment>
+      <context>
+        <uri id="458" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/context.psml" decodedpath="/ps/project/group/folder/context.psml" external="false" mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+          <displaytitle>My context document</displaytitle>
+        </uri>
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  <!-- Comment sent as an accouncement -->
+  <notification template="new-comment" description="New announcement" announcement="true"
+                taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="126" discussionid="126" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">Sesame opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  <!-- New task -->
+  <notification template="new-comment" description="New task" announcement="false"
+                taskchanged="false" modified="false"
+                subject="[acme-test] (Task) Cavern stolen!">
+    <comment id="127" discussionid="127" contentrole="Comment" created="2012-03-08T12:34:00+10:00"
+             status="Open" priority="High" due="2012-05-10T00:00:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <assignedto id="15" firstname="Jack" surname="Johnson" email="jjohnson@example.org" username="jjohnson">
+        <fullname>Jack Johnson</fullname>
+      </assignedto>
+      <content type="text/plain">Sesame opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+
+  <!-- Comment edited to make it a task -->
+  <notification template="new-comment" description="Task change" announcement="false"
+                taskchanged="true" modified="false"
+                subject="[acme-test] (Task) Cavern stolen!">
+    <comment id="127" discussionid="127" contentrole="Comment" created="2012-03-08T12:34:00+10:00"
+             status="Resolved" priority="High" due="2012-05-10T00:00:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <assignedto id="15" firstname="Jack" surname="Johnson" email="jjohnson@example.org" username="jjohnson">
+        <fullname>Jack Johnson</fullname>
+      </assignedto>
+      <content type="text/plain">Sesame opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  <!-- New workflow -->
+  <notification template="new-comment" description="New workflow" announcement="false"
+                taskchanged="false" modified="false"
+                subject="[acme-test] (Task) Cavern stolen!">
+    <comment id="127" discussionid="127" contentrole="Workflow" created="2012-03-08T12:34:00+10:00"
+             status="Initiated" priority="High" due="2012-05-10T00:00:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <assignedto id="15" firstname="Bill" surname="Abong" email="billabong@example.org" username="jjohnson">
+        <fullname>Bill Abong</fullname>
+      </assignedto>
+      <content type="text/plain">Getting started on this document.</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  
+  <!-- New comment with markdown content-->
+  <notification template="new-comment" description="New comment with markdown" announcement="false" taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="123" discussionid="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain"># Non Hersilie
+
+## Loqui suis partem
+
+Lorem markdownum praevitiat moenia vexant corpora laborent in caelo: ut mihi.
+Dubitare Perseia, Iovis tinguat nil fateri, tulit divum lactantiaque, circumdare
+[ignibus](http://hipstermerkel.tumblr.com/). Album ecce secedere inguina expulit
+terra terribiles puppe. Ille ipsius ultra gaudia: stipulis, pondere tonsa,
+inopem, nexaque felix fraternis villae, iacebitis. Deae mihi propior, paucaque
+lacrimas: terrae radiis obstante petunt telluris.
+
+## Et pro sis omen fervebat templa
+
+Non res inridet ortus deorum, eadem alti, me longo in telluris, aptius iam.
+Mundum sensit vocem pariter tempus.
+
+- Os huc Pentheus proditione amans
+- Monstro quantaque placidi pictam Achaemeniden thalamos tamen
+- Hamatisque ille
+- Guttae non igitur
+- Ferret spernimus fallaci corpus et excusare obruta
+
+## Ipsa auras animae imago recidendum nostra est
+
+Cum cum corpora fuit fuge est, se quis ingemuit? Famae parentem victa
+conplexaque sororis frustra vocat me mihi quam misit quibus Eurynome fatis.
+
+Coniugium indigenas fugit; tuum quoque, aliter hic parenti dixi prudens tuas
+formae iussaque, mecum? Si semine more cursus facitote pervenit ornant, terram
+Iuno in ulla; terra Cadmeida. Ennomon posset [laure ora
+tua](http://www.lipsum.com/), excutit me inmissos quibus. *Terram* in abdita
+Lavini.
+
+## Nec saxa exerces sibi favus obsistitur manebit
+
+Exuit haec oravique, sinamus facientibus praeterea hoc multi corona, inclusum
+pars **nox pavere** medullis fovet includit salientia *omnia*. Desperat de
+poenas Aurora, duo verba speciem in dedere, te illa Phoebeius Parthaone. Neque
+iura simulacra exhausta gente prospectat frondes mandate moverat neu cernit
+domitis baculumque ingemuit cernit.
+
+> Isto nitentibus *modum*; referitur verba radiantia nitidam intrat, tenebras,
+> gestamina posse iuvencos. Laesum naturaeque credita conplevit memini quoque
+> meritam manes: artes per cura cara moverat? Sonuit sperabam *sentiet* modo
+> commissaque meae dederat cognita [sucis det
+> meruit](http://hipstermerkel.tumblr.com/) et laetum nec contendere, bracchia
+> pecorum. Celat obortis quem, utrumque aras: solent caput, revocataque puer.
+
+Vestes domus ne dictis cultrosque, grandine, gerebat acta amor nec? Ille tertia
+requiem et omnibus ictus. Est inde illum portasque iuvenali nostra, in in caput
+semihomines? Nec concrescere, mediis neque vocem demum fusus **Cereris** dicebat
+Zephyro Cocinthia formosae.</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+      <labels>surprising,story</labels>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  <!-- Comment that has been edited -->
+  <notification template="new-comment" description="Modified comment" announcement="false"
+                taskchanged="false" modified="true"
+                subject="[acme-test] Cavern stolen!">
+    <comment id="128" discussionid="128" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <modifiedby id="18" firstname="Peter" surname="Thompson" email="pthompson@example.org">
+        <fullname>Peter Thompson</fullname>
+      </modifiedby>
+      <content type="text/plain">Sesame re-opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+  
+  <!-- Incoming emeil with other recipients -->
+  <notification template="new-comment" description="Incoming email with other recipients"
+                announcement="false" taskchanged="false" modified="false"
+                subject="[acme-test] Cavern stolen!">
+    <recipients>
+      <recipient type="to" name="Sally Jones" email="sjones@example.org"/>
+      <recipient type="cc" name="Bill Green"  email="bgreen@xyz.com"/>
+    </recipients>
+    <comment id="129" discussionid="129" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <title>Cavern stolen!</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="application/xhtml+xml">
+        <h2>Attention!</h2>
+        <p>Sesame <b>opened</b> the door!</p>
+      </content>
+      <content type="text/plain">Sesame opened the door</content>
+      <context>
+        <group id="3" name="acme-test" />
+      </context>
+    </comment>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+</notifications>

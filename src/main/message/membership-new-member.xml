@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML when a new membership and member were created notification.
+-->
+<notifications>
+  <notification template="membership-new-member" description="Membership with new member invited" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group invitation">
+    <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="unactivated">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" />
+    </membership>
+  </notification>
+  <notification template="membership-new-member" description="Membership with new member invited and activated" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group Invitation">
+    <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="activated">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" />
+    </membership>
+  </notification>
+  <notification template="membership-new-member" description="Membership with new member added" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group Registration">
+    <membership id="123" email-listed="true" notification="immediate" status="normal" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="unactivated">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" />
+    </membership>
+  </notification>
+</notifications>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for new version notification.
+-->
+<notifications>
+  <notification template="new-version" description="New version" announcement="false"
+                subject="[acme-test] My document version 1.0">
+    <version id="123" name="1.0" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <description>This is a document version</description>
+      <author id="15" firstname="Jack" surname="Johnson">
+        <fullname>Jack Johnson</fullname>
+      </author>
+    </version>
+    <group id="3" name="acme-test" />
+    <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
+         decodedpath="/ps/project/group/folder/file.psml" external="false"
+         mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+       <displaytitle>My document</displaytitle>
+       <description>This document is for testing purposes</description>
+       <labels>test,example</labels>
+     </uri>
+  </notification>
+</notifications>

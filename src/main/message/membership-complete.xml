@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for membership completed notification.
+-->
+<notifications>
+  <notification template="membership-complete" description="Membership completed"
+                generalcomments="true" helpurl="http://www.my-host.com/help"
+                subject="[acme-test] Group Registration">
+    <membership id="123" email-listed="true" notification="immediate" status="normal" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" flags="" visibility="acme" access="" commenting="reviewer"
+             moderation="reviewer" registration="normal" defaultrole="reviewer" defaultnotify="immediate"
+             common="false">
+        <message>Hope you enjoy using this group!</message>
+      </group>
+    </membership>
+  </notification>
+</notifications>

@@ -1,0 +1,109 @@
+/**
+ * Gradle script to generate PageSeeder emails from templates
+ */
+//apply plugin: 'java'
+
+repositories { 
+  mavenCentral()
+}
+
+configurations { 
+  xslt 
+} 
+
+dependencies { 
+  xslt 'net.sf.saxon:Saxon-HE:9.6.0-7'
+}
+
+// Generates all the emails as separate documents
+task generateAllSeparatePages(type: JavaExec, group: 'emails', dependsOn: ['generateFilelistInXML', 'prepareTemplates']) {
+  classpath = configurations.xslt
+  description = 'Generates all the HTML Email as separate files'
+  main = 'net.sf.saxon.Transform'
+  inputs.dir 'src'
+  outputs.file 'email/individual/'
+
+  // arguments to pass to the Saxon
+  args (
+    "-s:$buildDir/message/",
+    '-xsl:src/main/xslt/html-individual.xsl',
+    '-o:email/individual/',
+    '-warnings:silent'
+  )
+  doFirst {
+    File outputfolder = file('email/individual/');
+    outputfolder.mkdirs();
+  }
+}
+
+// Generates all the emails in a single page
+task generateAllSinglePage(type: JavaExec, group: 'emails', dependsOn: ['generateFilelistInXML', 'prepareTemplates']) {
+  classpath = configurations.xslt
+  description = 'Wrap all generated HTML emails in a single page'
+  main = 'net.sf.saxon.Transform'
+
+  // arguments to pass to the Saxon
+  args (
+    "-s:$buildDir/xslt/filelist.xml",
+    '-xsl:src/main/xslt/html-all-in-one.xsl',
+    '-o:email/all-in-one.html',
+    '-warnings:silent'
+  )
+  doFirst {
+    file('email/').mkdir();
+  }
+}
+
+// Install on your local PageSeeder install
+task installOnLocalPageSeeder(type: Copy, group: 'emails', dependsOn: 'prepareTemplates') {
+  description = 'Copy the HTML templates to a local PageSeeder installation'
+  from 'src/main/template/html'
+  into "$localPageSeeder/webapp/WEB-INF/template/$localProject/Notification"
+}
+
+// Generates the list of message files
+task generateFilelistInXML(type: JavaExec, dependsOn: 'preprocessMessages') {
+  classpath = configurations.xslt
+  main = 'net.sf.saxon.Transform'
+  inputs.dir "$buildDir/message/"
+  outputs.file "$buildDir/xslt/filelist.xml"
+  def buildDirURI = buildDir.toURI();
+  args (
+    '-s:src/main/xslt/filelist.xsl',
+    '-xsl:src/main/xslt/filelist.xsl',
+    "-o:$buildDir/xslt/filelist.xml",
+    "from=$buildDirURI/message/"
+  )
+}
+
+// Preprocess the message files
+task preprocessMessages(type: JavaExec) {
+  classpath = configurations.xslt
+  main = 'net.sf.saxon.Transform'
+  inputs.file 'gradle.properties'
+  inputs.dir 'src/main/message'
+  outputs.file "$buildDir/message/"
+  args (
+    '-s:src/main/message/',
+    '-xsl:src/main/xslt/preprocess.xsl',
+    "-o:$buildDir/message/",
+    "hosturl=$hostURL",
+    "emaildomain=$emailDomain",
+  )
+  onlyIf {
+    project.hasProperty('hostURL')
+    project.hasProperty('emailDomain')
+  }
+  doFirst {
+    file("$buildDir/message/").mkdirs();
+  }
+}
+
+// Copy the default templates the first time
+task prepareTemplates(type: Copy) {
+  from 'src/main/defaults'
+  into 'src/main/template'
+  onlyIf {
+    return !file('src/main/template/html').exists();
+  }
+}
