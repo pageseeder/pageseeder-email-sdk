@@ -6,10 +6,17 @@ It is mainly used to accelerate the development and testing of email templates.
 
 For more info on PageSeeder emails see [PageSeeder Email API](https://dev.pageseeder.com/guide/configuration/emails.html)
 
+## Installation
+
+This project includes the Gradle wrapper so as long as you have Java and an editor, 
+you should be able to get started.
+
+If using Eclipse, I recommend using [Buildship](http://projects.eclipse.org/projects/tools.buildship).
+
 ## Get started
 
 First, you need to update the details of your PageSeeder installation 
-in the `gradle.properties file` so that the generated emails use the correct 
+in the `gradle.properties` file so that the generated emails use the correct 
 email domain and URLs. 
 
 ```
