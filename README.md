@@ -77,14 +77,14 @@ Any custom templates should be defined here are this makes it easier to upgrade 
 This stylesheet defines most of the styles used for emails.
 It is useful to modify this stylesheet to change color scheme.
 
-### individual notification templates
+### Individual notification templates
 
 Individual templates can be modified to change:
  - the wording
  - the links and button so that they point to the correct location
 
 
-## file organisation
+## File organisation
 
 The files are organized as follows:
 
