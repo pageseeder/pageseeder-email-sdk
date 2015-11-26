@@ -1,6 +1,6 @@
-# pageseeder-emails
+# PageSeeder Email SDK
 
-This is a simple framework to help developers create customized PageSeeder email templates.
+This is a simple framework to help developers create customized email template for PageSeeder.
 
 For more info on PageSeeder emails see https://dev.pageseeder.com/guide/configuration/emails.html
 
@@ -11,8 +11,15 @@ in the `gradle.properties file` so that the generated emails use the correct
 email domain and URLs. 
 
 ```
-  emaildomain=pageseeder.localhost
-  hosturl=https://pageseeder.localhost:8443/ps/
+  # Define the Email domain of your server
+  emailDomain=pageseeder.localhost
+
+  # Define the host URL of your PageSeeder server
+  hostURL=https://pageseeder.localhost:8443/ps/
+
+  # Define where PageSeeder is installed locally
+  localPageSeeder=C:/PageSeeder/default
+  localProject=myproject
 ```
 
 ## Generate the HTML emails
