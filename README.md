@@ -26,7 +26,7 @@ email domain and URLs.
   # Define the host URL of your PageSeeder server
   hostURL=https://pageseeder.localhost:8443/ps/
 
-  # Define where PageSeeder is installed locally
+  # Define where PageSeeder is installed locally (Optional)
   localPageSeeder=C:/PageSeeder/default
   localProject=myproject
 ```
@@ -83,6 +83,14 @@ Individual templates can be modified to change:
  - the wording
  - the links and button so that they point to the correct location
 
+
+## Working with existing templates
+
+If you already have templates that you want to update, you can also use the SDK.
+
+1. Copy your files into the `src/main/template/html` folder. 
+2. Edit the individual templates to ensure that they match `notification[@template = 'template_id']` 
+   instead of just `notification`
 
 ## File organisation
 
