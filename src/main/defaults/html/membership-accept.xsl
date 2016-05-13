@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='membership-accept']" mode="meta">
   <title>[<xsl:value-of select="membership/(group|project)/@name" />] <xsl:value-of select=" if (membership/project) then 'Project' else 'Group'"/> Registration request</title>
 </xsl:template>
@@ -20,10 +20,15 @@
 
 <!-- Body content -->
 <xsl:template match="notification[@template='membership-accept']" mode="body">
+
+  <h3>Hi <xsl:value-of select="moderator/@firstname"/>,</h3>
+
   <p>Membership in <xsl:value-of select="membership/(group|project)/@name" /> has been configured 
   for moderation and you have been designated as the <b>Moderator</b>.</p>
 
   <p>To accept the application of the following person and trigger a confirmation message to them, click 'Accept'.</p>
+
+  <!-- TODO: Display the requested role of the new member? -->
 
   <table style="height:100px;width:100%" border="0" cellpadding="0" cellspacing="0"><tr>
     <td style="vertical-align: top;width:240px">
@@ -58,7 +63,7 @@
 
   <h4 style="clear: both">Accept <xsl:value-of select="membership/member/@firstname" />'s request?</h4>
 
-  <xsl:sequence select="f:button(concat(@hosturl, '/fullpage/', membership/(group|project)/@name, '/comment/groupdetails?action=accept&amp;mem=', membership/member/@id), 'Accept')"/>
+  <xsl:sequence select="f:button(concat(@hosturl, '/email/moderatemember?group=', membership/(group|project)/@name, '&amp;member=', membership/member/@id), 'Accept')"/>
 
   <p class="last">To reject the above application, or to defer your decision, simply ignore this message.</p>
 

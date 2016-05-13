@@ -3,7 +3,9 @@
   Sample XML for Out of Office change email.
 -->
 <notifications>
-  <notification template="out-of-office-change" description="Out of Office change"
+
+  <notification template="out-of-office-change" 
+             description="Out of Office change"
                 subject="WARNING: Your notification options have been set to 'On Vacation'">
     <outofoffice string="out of the office" limit="2" />
     <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
@@ -17,4 +19,5 @@
       </context>
     </comment>
   </notification>
+
 </notifications>

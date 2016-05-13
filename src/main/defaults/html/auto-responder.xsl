@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='auto-responder']" mode="meta">
   <title>WARNING: Comment limit reached</title>
 </xsl:template>
@@ -24,8 +24,8 @@
 
   <xsl:call-template name="message">
     <xsl:with-param name="subject"     select="comment/title" />
+    <xsl:with-param name="author"      select="comment/author" />
     <xsl:with-param name="content"     select="comment/content" />
-    <!--  TODO: Add author -->
   </xsl:call-template>
 
   <!-- More info -->

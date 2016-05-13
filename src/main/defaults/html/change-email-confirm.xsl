@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='change-email-confirm']" mode="meta">
   <title>PageSeeder email change confirmation</title>
 </xsl:template>
@@ -25,7 +25,7 @@
 
   <p>We would like to confirm that you prefer using <b><xsl:value-of select="@newemail" 
   /></b> as your email for PageSeeder.</p>
-  
+
   <p>If you do not wish to change your email address and continue using your current
   email address <b><xsl:value-of select="member/@email" /></b>, simply disregard this 
   email.</p>
@@ -33,13 +33,7 @@
   <p>Until you confirm this change, you will need to use your current email address to
   login to PageSeeder.</p>
 
-  <xsl:variable name="link">
-    <xsl:value-of select="@hosturl"/>/page/preferences/mydetails?login-username=<xsl:value-of 
-    select="encode-for-uri(member/@username)"
-    />&amp;email=<xsl:value-of select="encode-for-uri(@newemail)"
-    />&amp;key=<xsl:value-of select="encode-for-uri(@key)" />
-  </xsl:variable>
-  
+  <xsl:variable name="link" select="concat(@hosturl, '/email/changeemail?member=', member/@id, '&amp;token=', @token)"/>
   <xsl:sequence select="f:button($link, 'Change email')"/>
 
 </xsl:template>

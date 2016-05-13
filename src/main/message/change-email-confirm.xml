@@ -1,13 +1,21 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for confirmation notification when changing email.
+  
+  The `key` attribute is deprecated and will be removed in PageSeeder version 6.
+  The `token` attribute contains a base64url string and different from the key.
 -->
 <notifications>
+
   <notification template="change-email-confirm" description="Change email confirmation"
-    newemail="jjones@new-example.org" key="sdf21asdf571gf7dfg2" subject="PageSeeder email change confirmation">
+                newemail="jjones@new-example.org" 
+                 subject="PageSeeder email change confirmation"
+                     key="sdf21asdf571gf7dfg2" 
+                   token="ujHidAn9kKjObQuVbl_vLMc9npOjAKj2">
     <member id="12" firstname="John" lastname="Jones"
             email="jjones@example.org" username="jjones">
       <fullname>John Jones</fullname>
     </member>
   </notification>
+
 </notifications>

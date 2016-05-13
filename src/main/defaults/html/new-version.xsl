@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-version']" mode="meta">
   <meta name="list-id"            content="{group/@name}.{@hosturl}" />
   <meta name="list-name"          content="{group/@description}" />
@@ -45,6 +45,8 @@
 
   <!-- Labels -->
   <xsl:apply-templates select="version" mode="labels" />
+
+  <!-- XXX: Link to diff? -->
 
   <!-- No reply -->
   <p class="last">You cannot reply to this message.</p>

@@ -3,7 +3,9 @@
   Sample XML for notification that a comment was rejected.
 -->
 <notifications>
-  <notification template="reject-comment" description="Reject comment"
+
+  <notification template="reject-comment" 
+             description="Reject comment"
                 subject="RETURNED: Cavern stolen!">
     <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
@@ -16,4 +18,5 @@
       </context>
     </comment>
   </notification>
+
 </notifications>

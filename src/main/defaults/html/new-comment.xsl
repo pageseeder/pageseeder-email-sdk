@@ -11,7 +11,7 @@
 <xsl:import href="_frame.xsl"/>
 <xsl:import href="_markdown.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-comment']" mode="meta">
   <meta name="replyto-email"      content="{comment/@id}-reply@{@emaildomain}" />
   <meta name="replyto-name"       content="Reply to {group/@name} group" />
@@ -144,6 +144,7 @@
       <div style="padding-top: 2px; line-height:12px;">
       <img src="{$images-url}/{f:status-icon(@status)}" border="0" alt="{@status}" />
       <xsl:if test="@priority">
+        <span>&#xa0;</span>
         <img src="{$images-url}/{f:priority-icon(@priority)}" border="0" alt="{@priority}" />
       </xsl:if>
       </div>
@@ -202,7 +203,7 @@
         <xsl:variable name="view"     select="concat(/notification/@hosturl, '/page/', ../../../group/@name, '/uri/', @id)" />
         <xsl:variable name="download" select="concat(/notification/@hosturl, '/uri/', @id, '?behavior=download')" />
         <td style="font-size: 13px;"><xsl:sequence select="f:link($view, displaytitle)" /></td>
-        <td width="60" style="font-size: 13px;text-align:right">
+        <td width="50" style="font-size: 13px;text-align:right">
           <xsl:if test="not(starts-with(@behavior, 'standard-')) and not(@mediatype = 'folder')">
             <xsl:sequence select="f:link($download, 'Download')" />
           </xsl:if>

@@ -10,7 +10,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-url']" mode="meta">
   <meta name="list-id"            content="{group/@name}.{@emaildomain}" />
   <meta name="list-name"          content="{group/@description}" />

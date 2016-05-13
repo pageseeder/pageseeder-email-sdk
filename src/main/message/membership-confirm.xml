@@ -1,10 +1,29 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for membership invitation notification.
+  
+  When the member has been invited by another member, the latter is available
+  as the element `<inviter>`.
 -->
 <notifications>
-  <notification template="membership-confirm" description="Membership invitation"
-                subject="[acme-test] Group Invitation">
+
+  <notification template="membership-confirm" 
+             description="Membership invitation"
+                 subject="[acme-test] Group invitation">
+    <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME test group" owner="acme" />
+    </membership>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
+  </notification>
+
+  <notification template="membership-confirm" 
+             description="Membership invitation (self)"
+                 subject="[acme-test] Group invitation">
     <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
       <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
         <fullname>John Jones</fullname>
@@ -12,4 +31,5 @@
       <group id="3" name="acme-test" description="ACME test group" owner="acme" />
     </membership>
   </notification>
+
 </notifications>

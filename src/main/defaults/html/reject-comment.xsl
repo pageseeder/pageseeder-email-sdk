@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='reject-comment']" mode="meta">
   <title>RETURNED: <xsl:value-of select="comment/title" /></title>
 </xsl:template>
@@ -34,16 +34,16 @@
     <xsl:otherwise>
       <xsl:value-of select="comment/@authoremail" />
     </xsl:otherwise>
-  </xsl:choose></b>, please follow the link below: <br/><a href="{@hosturl}/page/nogroup/preferences/mydetails"
-  ><xsl:value-of select="@hosturl"/>/page/nogroup/preferences/mydetails</a></p>
+  </xsl:choose></b>, please follow the link below: <br/><a href="{@hosturl}/page/~/preferences/mydetails"
+  ><xsl:value-of select="@hosturl"/>/page/~/preferences/mydetails</a></p>
 
   <p>If you would like to have permission to post from an additional email address,
      please contact the person who originally subscribed you to this group.</p>
 
   <xsl:call-template name="message">
-    <xsl:with-param name="subject"     select="comment/title" />
-    <xsl:with-param name="content"     select="comment/content[contains(@type,'text/plain')]" />
-    <xsl:with-param name="uri"         select="comment/context/uri" />
+    <xsl:with-param name="subject" select="comment/title" />
+    <xsl:with-param name="content" select="comment/content[contains(@type,'text/plain')]" />
+    <xsl:with-param name="uri"     select="comment/context/uri" />
   </xsl:call-template>
 
   <p class="last">This is an automatically generated email - please do not respond 

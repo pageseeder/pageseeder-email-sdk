@@ -21,7 +21,6 @@
 <xsl:include href="html/out-of-office-change.xsl"/>
 <xsl:include href="html/out-of-office-warning.xsl"/>
 <xsl:include href="html/reject-comment.xsl"/>
-<xsl:include href="html/reset-password-complete.xsl"/>
 <xsl:include href="html/reset-password-confirm.xsl"/>
 
 </xsl:stylesheet>

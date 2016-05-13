@@ -1,18 +1,61 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for new member notification.
+  
+  Previous versions of PageSeeder may have included the user password when it
+  was generated in order to allow the user to login. This has been replaced by
+  a single-use token.
+  
+  The attribute `key` has been deprecated and will be removed in PageSeeder 6.
+  The attribute `token` is a base64url string.
+
+  There are 2 cases depending on whether the member status is `activated` or
+  `unactivated`.
 -->
 <notifications>
-  <notification template="new-member" description="New member" password="as46g2kvqd" subject="PageSeeder groups login details">
+
+  <notification template="new-member" 
+             description="New member (self)"
+                 subject="Welcome to PageSeeder"
+                   token="ujHidAn9kKjObQuVbl_vLMc9npOjAKj2">
     <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="activated">
       <fullname>John Jones</fullname>
     </member>
   </notification>
-  <notification template="new-member" description="New unactivated member"
-                password="as46g2kvqd" key="sdf21asdf571gf7dfg2"
-                subject="PageSeeder groups login details">
+
+  <notification template="new-member" 
+             description="New unactivated member (self)"
+                 subject="Welcome to PageSeeder"
+                     key="54fds2sd57dgfs21sg"
+                   token="Kiwp8Vs7_fw-I2oOg47z_AdjqLh1e89">
     <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="unactivated">
       <fullname>John Jones</fullname>
     </member>
   </notification>
+
+  <notification template="new-member" 
+             description="New member" 
+                 subject="Welcome to PageSeeder"
+                   token="ujHidAn9kKjObQuVbl_vLMc9npOjAKj2">
+    <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="activated">
+      <fullname>John Jones</fullname>
+    </member>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
+  </notification>
+
+  <notification template="new-member" 
+             description="New unactivated member"
+                 subject="Welcome to PageSeeder"
+                     key="54fds2sd57dgfs21sg"
+                   token="Kiwp8Vs7_fw-I2oOg47z_AdjqLh1e89">
+    <member id="12" firstname="John" lastname="Jones" email="jjones@example.org" status="unactivated">
+      <fullname>John Jones</fullname>
+    </member>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
+  </notification>
+
 </notifications>

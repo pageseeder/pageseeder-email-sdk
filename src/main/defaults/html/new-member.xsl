@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-member']" mode="meta">
   <title>Welcome to PageSeeder</title>
 </xsl:template>
@@ -18,7 +18,11 @@
 <xsl:template match="notification[@template='new-member']" mode="body">
   <h3>Hi <xsl:value-of select="member/@firstname" />,</h3>
 
-  <p class="lead">Welcome to PageSeeder at <a href="{@hosturl}"><xsl:value-of 
+  <p class="lead">
+  <xsl:choose>
+    <xsl:when test="inviter"><b><xsl:value-of select="inviter/fullname"/></b> invited you to use</xsl:when>
+    <xsl:otherwise>Welcome to</xsl:otherwise>
+  </xsl:choose> PageSeeder at <a href="{@hosturl}"><xsl:value-of 
   select="f:hostname(@hosturl)" /></a>.</p>
 
   <p>PageSeeder allows groups of people to collaborate on different documents
@@ -29,23 +33,18 @@
     or your username <b><xsl:value-of select="member/@username" /></b>
   </xsl:if>.</p>
 
-  <p>You've been assigned a temporary random password:</p>
-  <center><h4><xsl:value-of select="@password" /></h4></center>
-
   <!-- check if member is activated -->
   <xsl:choose>
-    <xsl:when test="member/@status = 'unactivated'">
-      <p>You must click on the button below to activate your account before being able to use PageSeeder.
-         If you have been assigned a random password you can also change it to something easier for you to remember.</p>
+    <xsl:when test="member/@status != 'activated'">
+      <p>You must click on the button below to activate your account before being able to use PageSeeder.</p>
       <p>
-        <xsl:variable name="link" select="concat(@hosturl, '/page/nogroup/preferences/mydetails?username=', encode-for-uri(if (member/@username) then member/@username else member/@email), '&amp;key=', encode-for-uri(@key))"/>
+        <xsl:variable name="link" select="concat(@hosturl, '/email/activate?member=', member/@id, '&amp;token=', @token)"/>
         <xsl:sequence select="f:button($link, 'Activate my account')"/>
       </p>
     </xsl:when>
     <xsl:otherwise>
-      <p>If you have been assigned a random name or password you can change it to 
-      something easier for you to remember.</p>
-      <xsl:sequence select="f:button(concat(@hosturl, '/page/nogroup/preferences/mydetails'), 'Update your password')"/>
+      <p>You must click on the button below to get started before being able to use PageSeeder.</p>
+      <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token), 'Get started')"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

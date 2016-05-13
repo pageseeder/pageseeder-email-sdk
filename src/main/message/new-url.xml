@@ -1,10 +1,17 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for URL creation/modification notifications.
+  
+  There are 4 possible emails based on:
+  - whether the email is an announcement
+  - whether the URL was modified
 -->
 <notifications>
-  <notification template="new-url" announcement="true" description="Creation of new URL as announcement"
-                subject="[acme-test] URL Created: My URL title">
+
+  <notification template="new-url"
+            announcement="true" 
+             description="Creation of new URL as announcement"
+                 subject="[acme-test] URL Created: My URL title">
     <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
          decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
          title="My URL title">
@@ -15,8 +22,10 @@
       <message>Welcome to the group!</message>
     </group>
   </notification>
-  <notification template="new-url" description="Creation of new URL"
-                subject="[acme-test] URL Created: My URL title">
+
+  <notification template="new-url" 
+             description="Creation of new URL"
+                 subject="[acme-test] URL Created: My URL title">
     <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
          decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
          title="My URL title">
@@ -27,9 +36,12 @@
       <message>Welcome to the group!</message>
     </group>
   </notification>
-  <notification template="new-url" announcement="true" modified="true"
-                description="Modification of URL as announcement"
-                subject="[acme-test] URL Modified: My URL title">
+
+  <notification template="new-url"
+            announcement="true" 
+                modified="true"
+             description="Modification of URL as announcement"
+                 subject="[acme-test] URL Modified: My URL title">
     <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
          decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
          title="My URL title">
@@ -40,8 +52,11 @@
       <message>Welcome to the group!</message>
     </group>
   </notification>
-  <notification template="new-url" modified="true" description="Modification of URL"
-                subject="[acme-test] URL Modified: My URL title">
+
+  <notification template="new-url"
+                modified="true" 
+             description="Modification of URL"
+                 subject="[acme-test] URL Modified: My URL title">
     <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
          decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
          title="My URL title">
@@ -52,4 +67,5 @@
       <message>Welcome to the group!</message>
     </group>
   </notification>
+
 </notifications>

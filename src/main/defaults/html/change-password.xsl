@@ -9,7 +9,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='change-password']" mode="meta">
   <title>PAGESEEDER: Password updated</title>
 </xsl:template>
@@ -22,7 +22,7 @@
 <!-- Body content -->
 <xsl:template match="notification[@template='change-password']" mode="body">
   <h3>Hi <xsl:value-of select="member/@firstname" />,</h3>
-  
+
   <p>Your <b>password has been updated</b> for the following PageSeeder site: 
   <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)" /></a></p>
 

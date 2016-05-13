@@ -10,7 +10,7 @@
 
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='daily-digest']" mode="meta">
   <title>[<xsl:value-of select="group/@name" />] Daily notification</title>
 </xsl:template>
@@ -24,7 +24,7 @@
 <xsl:template match="notification[@template='daily-digest']" mode="footer">
   <p>You received this message because you are part of group <i><xsl:value-of select="group/@name" /></i>.</p>
   <p>If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/page/{group/@name}/preferences/mygroups">your subscription options</a>.</p>
+      href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
 </xsl:template>
 
 <!-- ===================================================================================== -->
@@ -164,6 +164,4 @@
   </table>
 </xsl:template>
 
-
 </xsl:stylesheet>
-

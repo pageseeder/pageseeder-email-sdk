@@ -1,12 +1,22 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for new comment notification.
+
+  The notification element can have the following boolean attributes:
+   - the `announcement` attribute is `true` for announcements from PageSeeder
+   comments or incoming emails from a `[group]-announce` email address
+   - the `modified` and `taskchanged` attributes are only set for comments
+   created by PageSeeder
 -->
 <notifications>
 
   <!-- New comment -->
-  <notification template="new-comment" description="New comment" announcement="false" taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="New comment" 
+            announcement="false"
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="123" discussionid="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -22,9 +32,11 @@
   </notification>
 
   <!-- Reply to a comment -->
-  <notification template="new-comment" description="Reply comment" announcement="false"
-                taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="Reply comment" announcement="false"
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="124" discussionid="123" contentrole="Comment" created="2012-03-09T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="13" firstname="Sally" surname="Jones" email="sjones@example.org" username="sjones">
@@ -39,9 +51,12 @@
   </notification>
 
   <!-- Comment with attachments -->
-  <notification template="new-comment" description="New comment with attachments"
-                announcement="false" taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="New comment with attachments"
+            announcement="false" 
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="125" discussionid="125" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -74,9 +89,11 @@
   </notification>
   
   <!-- Comment sent as an accouncement -->
-  <notification template="new-comment" description="New announcement" announcement="true"
-                taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="New announcement" announcement="true"
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="126" discussionid="126" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -91,9 +108,12 @@
   </notification>
   
   <!-- New task -->
-  <notification template="new-comment" description="New task" announcement="false"
-                taskchanged="false" modified="false"
-                subject="[acme-test] (Task) Cavern stolen!">
+  <notification template="new-comment" 
+             description="New task"
+            announcement="false"
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] (Task) Cavern stolen!">
     <comment id="127" discussionid="127" contentrole="Comment" created="2012-03-08T12:34:00+10:00"
              status="Open" priority="High" due="2012-05-10T00:00:00+10:00">
       <title>Cavern stolen!</title>
@@ -112,9 +132,12 @@
   </notification>
 
   <!-- Comment edited to make it a task -->
-  <notification template="new-comment" description="Task change" announcement="false"
-                taskchanged="true" modified="false"
-                subject="[acme-test] (Task) Cavern stolen!">
+  <notification template="new-comment" 
+             description="Task change" 
+            announcement="false"
+             taskchanged="true" 
+                modified="false"
+                 subject="[acme-test] (Task) Cavern stolen!">
     <comment id="127" discussionid="127" contentrole="Comment" created="2012-03-08T12:34:00+10:00"
              status="Resolved" priority="High" due="2012-05-10T00:00:00+10:00">
       <title>Cavern stolen!</title>
@@ -133,9 +156,12 @@
   </notification>
   
   <!-- New workflow -->
-  <notification template="new-comment" description="New workflow" announcement="false"
-                taskchanged="false" modified="false"
-                subject="[acme-test] (Task) Cavern stolen!">
+  <notification template="new-comment" 
+             description="New workflow" 
+            announcement="false"
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] (Task) Cavern stolen!">
     <comment id="127" discussionid="127" contentrole="Workflow" created="2012-03-08T12:34:00+10:00"
              status="Initiated" priority="High" due="2012-05-10T00:00:00+10:00">
       <title>Cavern stolen!</title>
@@ -155,8 +181,12 @@
   
   
   <!-- New comment with markdown content-->
-  <notification template="new-comment" description="New comment with markdown" announcement="false" taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="New comment with markdown" 
+            announcement="false" 
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="123" discussionid="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -223,9 +253,12 @@ Zephyro Cocinthia formosae.</content>
   </notification>
   
   <!-- Comment that has been edited -->
-  <notification template="new-comment" description="Modified comment" announcement="false"
-                taskchanged="false" modified="true"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="Modified comment" 
+            announcement="false"
+             taskchanged="false" 
+                modified="true"
+                 subject="[acme-test] Cavern stolen!">
     <comment id="128" discussionid="128" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -243,9 +276,12 @@ Zephyro Cocinthia formosae.</content>
   </notification>
   
   <!-- Incoming emeil with other recipients -->
-  <notification template="new-comment" description="Incoming email with other recipients"
-                announcement="false" taskchanged="false" modified="false"
-                subject="[acme-test] Cavern stolen!">
+  <notification template="new-comment" 
+             description="Incoming email with other recipients"
+            announcement="false" 
+             taskchanged="false" 
+                modified="false"
+                 subject="[acme-test] Cavern stolen!">
     <recipients>
       <recipient type="to" name="Sally Jones" email="sjones@example.org"/>
       <recipient type="cc" name="Bill Green"  email="bgreen@xyz.com"/>
@@ -266,4 +302,5 @@ Zephyro Cocinthia formosae.</content>
     </comment>
     <group id="3" name="acme-test" description="The ACME testing group"/>
   </notification>
+  
 </notifications>

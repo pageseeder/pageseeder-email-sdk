@@ -11,7 +11,7 @@
 <!-- Common templates for emails -->
 <xsl:import href="_frame.xsl"/>
 
-<!-- Metadata -->
+<!-- Subject and metadata -->
 <xsl:template match="notification[@template='out-of-office-change']" mode="meta">
   <title>WARNING: Your notification options have been set to 'On Vacation'</title>
 </xsl:template>
@@ -25,7 +25,7 @@
   select="outofoffice/@limit" /></b> 'Out of Office' messages have been received in a row.</p>
 
   <p>You can change your 'On Vacation' option by visiting <a
-    href="{@hosturl}/page/nogroup/preferences/mygroups">your notification options</a>.</p>
+    href="{@hosturl}/page/~/preferences/mygroups">your notification options</a>.</p>
 
   <p>If the message below is a valid message, please change the subject before re-sending it to the group.</p>
 
@@ -37,8 +37,8 @@
   </xsl:for-each>.</p>
 
   <xsl:call-template name="message">
-    <xsl:with-param name="subject"     select="comment/title" />
-    <xsl:with-param name="content"     select="comment/content[contains(@type,'text/plain')]" />
+    <xsl:with-param name="subject" select="comment/title" />
+    <xsl:with-param name="content" select="comment/content[contains(@type,'text/plain')]" />
   </xsl:call-template>
 
   <p class="last">This is an automatically generated email - please do not respond to 

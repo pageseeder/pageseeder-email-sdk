@@ -1,30 +1,85 @@
 <?xml version="1.0"?>
 <!--
   Sample XML when a new membership and member were created notification.
+  
+  Previous versions of PageSeeder may have included the user password when it
+  was generated in order to allow the user to login. This has been replaced by
+  a single-use token.
+  
+  The attribute `key` has been deprecated and will be removed in PageSeeder 6.
+  The attribute `token` is a base64url string.
+  
+  There are 4 cases based on:
+  - whether the member status is `activated` or `unactivated`
+  - whether the membership status is `invited` or `normal`
+  
+  When the member has been invited by another member, the latter is available
+  as the element `<inviter>`.
 -->
 <notifications>
-  <notification template="membership-new-member" description="Membership with new member invited" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group invitation">
+
+  <notification template="membership-new-member" 
+             description="Membership with new member invited" 
+                     key="54fds2sd57dgfs21sg"
+                   token="ujHidAn9kKjObQuVbl_vLMc9npOjAKj2"
+                 subject="[acme-test] Welcome to PageSeeder">
     <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
       <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="unactivated">
         <fullname>John Jones</fullname>
       </member>
       <group id="3" name="acme-test" description="ACME group" owner="acme" />
     </membership>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
   </notification>
-  <notification template="membership-new-member" description="Membership with new member invited and activated" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group Invitation">
+
+  <notification template="membership-new-member" 
+             description="Membership with new member invited and activated" 
+                     key="54fds2sd57dgfs21sg"
+                   token="Kiwp8Vs7_fw-I2oOg47z_AdjqLh1e89"
+                 subject="[acme-test] Welcome to PageSeeder">
     <membership id="123" email-listed="true" notification="immediate" status="invited" role="reviewer">
       <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="activated">
         <fullname>John Jones</fullname>
       </member>
       <group id="3" name="acme-test" description="ACME group" owner="acme" />
     </membership>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
   </notification>
-  <notification template="membership-new-member" description="Membership with new member added" password="srf2m7zdf8" key="54fds2sd57dgfs21sg" subject="[acme-test] Group Registration">
+
+  <notification template="membership-new-member" 
+             description="Membership with new member added" 
+                     key="54fds2sd57dgfs21sg" 
+                   token="Kiwp8Vs7_fw-I2oOg47z_AdjqLh1e89"
+                 subject="[acme-test] Welcome to PageSeeder">
     <membership id="123" email-listed="true" notification="immediate" status="normal" role="reviewer">
       <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="unactivated">
         <fullname>John Jones</fullname>
       </member>
       <group id="3" name="acme-test" description="ACME group" owner="acme" />
     </membership>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
   </notification>
+
+  <notification template="membership-new-member" 
+             description="Membership with new member added and activated" 
+                     key="54fds2sd57dgfs21sg" 
+                   token="Kiwp8Vs7_fw-I2oOg47z_AdjqLh1e89"
+                 subject="[acme-test] Welcome to PageSeeder">
+    <membership id="123" email-listed="true" notification="immediate" status="normal" role="reviewer">
+      <member id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones" status="activated">
+        <fullname>John Jones</fullname>
+      </member>
+      <group id="3" name="acme-test" description="ACME group" owner="acme" />
+    </membership>
+    <inviter id="77" firstname="Alice" surname="Thomson" email="athomson@example.org" username="athomson">
+      <fullname>Alice Thomson</fullname>
+    </inviter>
+  </notification>
+
 </notifications>

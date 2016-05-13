@@ -4,7 +4,9 @@
  -->
 <notifications>
 
-  <notification template="accept-comment" description="Moderate comment" subject="[acme-test]* Cavern stolen!">
+  <notification template="accept-comment" 
+             description="Moderate comment" 
+                 subject="[acme-test]* Cavern stolen!">
     <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -21,7 +23,9 @@
     <group id="3" name="acme-test" description="Group used for illustrative examples in documents" />
   </notification>
 
-  <notification template="accept-comment" description="Moderate comment with attachments" subject="[acme-test]* Cavern stolen!">
+  <notification template="accept-comment" 
+             description="Moderate comment with attachments" 
+                 subject="[acme-test]* Cavern stolen!">
     <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
       <title>Cavern stolen!</title>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
@@ -32,7 +36,7 @@
       </assignedto>
       <content type="text/plain">Sesame opened the door</content>
       <attachment>
-        <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
+        <uri id="456" scheme="http" host="www.example.com" port="80" path="/ps/project/group/folder/file.psml"
            decodedpath="/ps/project/group/folder/file.psml" external="false"
            mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
           <displaytitle>My document</displaytitle>
@@ -41,14 +45,14 @@
         </uri>
       </attachment>
       <attachment>
-        <uri id="457" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/subfolder/image.png"
+        <uri id="457" scheme="http" host="www.example.com" port="80" path="/ps/project/group/folder/subfolder/image.png"
            decodedpath="/ps/project/group/folder/subfolder/image.png" external="false"
            mediatype="image/png" created="2012-01-18T17:35:00+10:00">
           <displaytitle>An image</displaytitle>
         </uri>
       </attachment>
       <context>
-        <uri id="458" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/context.psml" decodedpath="/ps/project/group/folder/context.psml" external="false" mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+        <uri id="458" scheme="http" host="www.example.com" port="80" path="/ps/project/group/folder/context.psml" decodedpath="/ps/project/group/folder/context.psml" external="false" mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
           <displaytitle>My context document</displaytitle>
         </uri>
       </context>

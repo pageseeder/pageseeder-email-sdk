@@ -48,7 +48,7 @@
     <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
     <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
     <p>If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/page/{$group/@name}/preferences/mygroups">your subscription options</a></p>
+      href="{@hosturl}/email/mygroups">your subscription options</a></p>
   </xsl:when>
   <xsl:otherwise>
     <p>This email has been sent to you because you have an account on 
