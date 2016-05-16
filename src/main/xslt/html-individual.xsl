@@ -22,7 +22,7 @@
 <xsl:template match="notifications">
 <xsl:for-each select="notification">
   <!-- Each notification  -->
-  <xsl:result-document href="{@name}-{position()}.html" format="email">
+  <xsl:result-document href="{@template}-{position()}.html" format="email">
     <xsl:apply-templates select="."/>
   </xsl:result-document>
 </xsl:for-each>
