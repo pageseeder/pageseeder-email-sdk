@@ -7,8 +7,23 @@
 <xsl:param name="hosturl" />
 <xsl:param name="emaildomain" />
 
-<!-- Generate Emails as indented XHTML documents -->
+<!-- Generate XML -->
 <xsl:output method="xml"/>
+
+<!-- Generate Emails as indented XHTML documents -->
+<xsl:output method="xml" name="notification"/>
+
+<!-- 
+  Sample messages contain multiple notifications 
+-->
+<xsl:template match="notifications">
+<xsl:for-each select="notification">
+  <!-- Each notification  -->
+  <xsl:result-document href="{@template}-{position()}.xml" format="notification">
+    <xsl:apply-templates select="."/>
+  </xsl:result-document>
+</xsl:for-each>
+</xsl:template>
 
 <!-- Inject headers into notifications -->
 <xsl:template match="notification">

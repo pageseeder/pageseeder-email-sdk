@@ -3,6 +3,22 @@
  */
 //apply plugin: 'java'
 
+// Requires for XSLT transformations
+import javax.xml.transform.stream.StreamResult
+import javax.xml.transform.stream.StreamSource
+import javax.xml.transform.TransformerFactory 
+import javax.xml.transform.Transformer 
+import javax.xml.transform.TransformerException
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'net.sf.saxon:Saxon-HE:9.6.0-7'
+  }
+}
+
 repositories { 
   mavenCentral()
 }
@@ -74,6 +90,116 @@ task generateFilelistInXML(type: JavaExec, dependsOn: 'preprocessMessages') {
     "-o:$buildDir/xslt/filelist.xml",
     "from=$buildDirURI/message/"
   )
+}
+
+// Generates the list of message files
+task assembleHTMLEmails(type: JavaExec, dependsOn: 'generateHTMLEmails') {
+  classpath = configurations.xslt
+  main = 'net.sf.saxon.Transform'
+  inputs.dir 'email/html'
+  inputs.file 'src/main/xslt/html-assemble.xsl'
+  outputs.file 'email/all.html'
+  def htmlEmailURI = file('email/html').toURI();
+  args (
+    '-s:src/main/xslt/html-assemble.xsl',
+    '-xsl:src/main/xslt/html-assemble.xsl',
+    "-o:email/all.html",
+    "from=$htmlEmailURI"
+  )
+}
+
+
+// Generates the list of message files
+task assembleTextEmails(group: 'emails', dependsOn: 'generateTextEmails') {
+  inputs.dir 'email/text'
+  outputs.file 'email/all.txt'
+  doLast {
+    String div = '_______________________________________________________________________\n'
+    File srcDir = file('email/text');
+    File out = file('email/all.txt');
+    FileCollection emails = files { srcDir.listFiles() };
+    out.text = emails.collect{
+      div + it.name + '\n' + div + it.getText()
+    }.join('\n');
+  }
+}
+
+// Generate the HTML Emails
+task generateHTMLEmails(group: 'emails', dependsOn: ['preprocessMessages', 'prepareTemplates']) {
+  description = 'Generates all the HTML emails as separate files'
+  inputs.file 'gradle.properties'
+  inputs.dir 'src/main/template/html'
+  outputs.file 'email/html'
+  doLast {
+    File templateDir = file('src/main/template/html');
+    File messageDir = file("$buildDir/message/");
+    File emailDir = file('email/html/');
+    emailDir.mkdirs();
+    Properties output = new Properties();
+    output.setProperty("encoding",   "utf-8");
+    output.setProperty("method",     "xhtml");
+    output.setProperty("media-type", "application/html+xml");
+    output.setProperty("doctype-public", "-//W3C//DTD XHTML 1.0 Strict//EN");
+    output.setProperty("doctype-system", "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd");
+    output.setProperty("indent",     "no");
+    FileCollection messages = files { messageDir.listFiles() };
+    templateDir.eachFileMatch(~/^[a-z-]+.xsl$/) { template ->
+      String email = template.name.replace('.xsl', '');
+      def xsl = new StreamSource(template);
+      try {
+        Transformer transformer = TransformerFactory.newInstance().newTransformer(xsl);
+        transformer.outputProperties = output;
+        messages.each { message ->
+          if (message.name.startsWith(email)) {
+            File f = new File(emailDir, message.name.replace('.xml', '.html'))
+            println 'Processing ' + message.name + ' with ' + template.name + ' as '+f.name;
+            def xmlInput = new StreamSource(message);
+            def xmlOutput = new StreamResult(f);
+            transformer.transform(xmlInput, xmlOutput);
+          }
+        }
+      } catch (TransformerException ex) {
+        println ex.getMessageAndLocation();
+      }
+    }
+  }
+}
+
+// Generate the Text Emails
+task generateTextEmails(group: 'emails', dependsOn: ['preprocessMessages', 'prepareTemplates']) {
+  description = 'Generates all the text emails as separate files'
+  inputs.file 'gradle.properties'
+  inputs.dir 'src/main/template/text'
+  outputs.file 'email/text'
+  doLast {
+    File templateDir = file('src/main/template/text');
+    File messageDir = file("$buildDir/message/");
+    File emailDir = file('email/text');
+    emailDir.mkdirs();
+    Properties output = new Properties();
+    output.setProperty("encoding", "utf-8");
+    output.setProperty("method",   "text");
+    FileCollection messages = files { messageDir.listFiles() };
+    templateDir.eachFileMatch(~/^[a-z-]+.xsl$/) { template ->
+      String email = template.name.replace('-text.xsl', '');
+      def xsl = new StreamSource(template);
+      try {
+	    Transformer transformer = TransformerFactory.newInstance().newTransformer(xsl);
+	    transformer.outputProperties = output;
+        messages.each { message ->
+	      if (message.name.startsWith(email)) {
+	        File f = new File(emailDir, message.name.replace('.xml', '.txt'))
+	        println 'Processing ' + message.name + ' with ' + template.name + ' as '+f.name;
+	        def xmlInput = new StreamSource(message);
+	        def xmlOutput = new StreamResult(f);
+	        transformer.transform(xmlInput, xmlOutput);
+	      }
+	    }
+	  } catch (TransformerException ex) {
+        println ex.getMessageAndLocation();
+      }
+    }
+  }
 }
 
 // Preprocess the message files
