@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<!--
+  Sample XML for document or URL creation/modification/upload notifications.
+  
+  Only one email is for an announcement as the message should be the same for all.
+-->
+<notifications>
+
+  <notification template="new-uri"
+            announcement="true" 
+             description="Creation of new URL as announcement"
+                 subject="[acme-test] URL created: My URL title">
+    <message contentrole="URL Creation" created="2012-03-08T12:34:00+10:00">
+      <title>URL created: My URL title</title>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">A new URL has been created with description:
+
+My URL description.</content>
+      <attachment>
+        <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
+             decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
+             title="My URL title">
+          <displaytitle>My URL title</displaytitle>
+          <description>My URL description.</description>
+        </uri>
+      </attachment>
+      <group id="123" name="myproject-mygroup" owner="My Organisation" description="My Own Group" />
+    </message>
+    <group id="123" name="myproject-mygroup" owner="My Organisation" description="My Own Group" />
+  </notification>
+
+  <notification template="new-uri" 
+             description="Creation of new URL"
+                 subject="[acme-test] URL created: My URL title">
+    <message contentrole="URL Creation" created="2012-03-08T12:34:00+10:00">
+      <title>URL created: My URL title</title>
+      <labels>surprising,story</labels>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">A new URL has been created with description:
+
+My URL description.</content>
+      <attachment>
+        <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
+             decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
+             title="My URL title">
+          <displaytitle>My URL title</displaytitle>
+          <description>My URL description.</description>
+          <labels>surprising,story</labels>
+        </uri>
+      </attachment>
+      <group id="123" name="myproject-mygroup" owner="My Organisation" description="My Own Group" />
+    </message>
+    <group id="123" name="myproject-mygroup" owner="My Organisation" description="My Own Group" />
+  </notification>
+
+  <notification template="new-uri" 
+             description="Modification of URL"
+                 subject="[acme-test] URL modified: My URL title">
+    <message contentrole="URL Modification" created="2012-03-08T12:34:00+10:00">
+      <title>URL modified: My URL title</title>
+      <labels>surprising,story</labels>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">An existing URL has been modified with description:
+
+My URL description.</content>
+      <attachment>
+        <uri id="456" scheme="https" host="www.my-external-host.com" port="443" path="/my-external-url.html"
+             decodedpath="/my-external-url.html" external="true" created="2013-08-26T12:11:59+10:00"
+             title="My URL title">
+          <displaytitle>My URL title</displaytitle>
+          <description>My URL description.</description>
+          <labels>surprising,story</labels>
+        </uri>
+      </attachment>
+    </message>
+    <group id="123" name="myproject-mygroup" owner="My Organisation" description="My Own Group" />
+  </notification>
+
+  <notification template="new-uri" 
+             description="Document upload"
+            announcement="false" 
+                 subject="[acme-test] Document upload">
+    <message contentrole="File Upload" created="2012-03-08T12:34:00+10:00">
+      <title>Document upload</title>
+      <labels>surprising,story</labels>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">These documents have been uploaded.</content>
+      <attachment>
+        <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
+           decodedpath="/ps/project/group/folder/file.psml" external="false"
+           mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+          <displaytitle>My document</displaytitle>
+          <description>This document is for testing purposes</description>
+          <labels>test,example</labels>
+        </uri>
+      </attachment>
+      <attachment>
+        <uri id="457" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/subfolder/image.png"
+           decodedpath="/ps/project/group/folder/subfolder/image.png" external="false"
+           mediatype="image/png" created="2012-01-18T17:35:00+10:00">
+          <displaytitle>An image</displaytitle>
+        </uri>
+      </attachment>
+    </message>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+
+  <notification template="new-uri" 
+             description="Document creation"
+            announcement="false" 
+                 subject="[acme-test] Document created">
+    <message contentrole="File Creation" created="2012-03-08T12:34:00+10:00">
+      <title>Document created</title>
+      <labels>surprising,story</labels>
+      <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+        <fullname>John Jones</fullname>
+      </author>
+      <content type="text/plain">A new document has been created.</content>
+      <attachment>
+        <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
+           decodedpath="/ps/project/group/folder/file.psml" external="false"
+           mediatype="application/vnd.pageseeder.psml+xml" created="2012-01-18T17:22:00+10:00">
+          <displaytitle>My document</displaytitle>
+          <description>This document is for testing purposes</description>
+          <labels>test,example</labels>
+        </uri>
+      </attachment>
+    </message>
+    <group id="3" name="acme-test" description="The ACME testing group"/>
+  </notification>
+
+</notifications>
