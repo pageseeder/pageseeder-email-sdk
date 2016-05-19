@@ -2,6 +2,8 @@
 <!--
   Email sent to the user after the limit of "Out of Office" reply messages was reached
   to notify him that its personal preferences have been changed to "On vacation".
+
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"
@@ -25,7 +27,7 @@
   select="outofoffice/@limit" /></b> 'Out of Office' messages have been received in a row.</p>
 
   <p>You can change your 'On Vacation' option by visiting <a
-    href="{@hosturl}/page/~/preferences/mygroups">your notification options</a>.</p>
+    href="{@hosturl}/email/myoptions">your notification options</a>.</p>
 
   <p>If the message below is a valid message, please change the subject before re-sending it to the group.</p>
 

@@ -24,7 +24,7 @@
   <h3>Hi <xsl:value-of select="moderator/@firstname"/>,</h3>
 
   <p>Membership in <xsl:value-of select="membership/(group|project)/@name" /> has been configured 
-  for moderation and you have been designated as the <b>Moderator</b>.</p>
+  for moderation and you have been designated as the <b>moderator</b>.</p>
 
   <p>To accept the application of the following person and trigger a confirmation message to them, click 'Accept'.</p>
 

@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!--
   Email sent to the user after a new comment is added.
+
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -85,7 +87,7 @@
   <!-- Labels -->
   <xsl:apply-templates select="comment" mode="labels" />
 
-  <!-- File Attachements -->
+  <!-- File Attachments -->
   <xsl:apply-templates select="comment" mode="attachments" />
 
   <!-- More info -->
@@ -195,7 +197,7 @@
 
 <xsl:template match="comment" mode="attachments">
 <xsl:if test="attachment/uri">
-  <h4 class="subtitle">File Attachments</h4>
+  <h4 class="subtitle">File attachments</h4>
   <table width="100%" cellpadding="2" cellspacing="0" border="0" style="border-collapse: collapse"><tbody>
     <xsl:for-each select="attachment/uri">
       <tr>
@@ -204,7 +206,7 @@
         <xsl:variable name="download" select="concat(/notification/@hosturl, '/uri/', @id, '?behavior=download')" />
         <td style="font-size: 13px;"><xsl:sequence select="f:link($view, displaytitle)" /></td>
         <td width="50" style="font-size: 13px;text-align:right">
-          <xsl:if test="not(starts-with(@behavior, 'standard-')) and not(@mediatype = 'folder')">
+          <xsl:if test="not(@mediatype = 'folder')">
             <xsl:sequence select="f:link($download, 'Download')" />
           </xsl:if>
         </td>

@@ -2,7 +2,9 @@
 <!--
   When the user request their password to be reset, this email is
   sent to confirm.
- -->
+
+  @version 5.8900
+-->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"

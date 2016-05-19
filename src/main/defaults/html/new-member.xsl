@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!-- 
   Email sent to the user after a user is created.
+
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"
@@ -22,8 +24,7 @@
   <xsl:choose>
     <xsl:when test="inviter"><b><xsl:value-of select="inviter/fullname"/></b> invited you to use</xsl:when>
     <xsl:otherwise>Welcome to</xsl:otherwise>
-  </xsl:choose> PageSeeder at <a href="{@hosturl}"><xsl:value-of 
-  select="f:hostname(@hosturl)" /></a>.</p>
+  </xsl:choose> PageSeeder at <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
 
   <p>PageSeeder allows groups of people to collaborate on different documents
      available on the site.</p>
@@ -38,7 +39,7 @@
     <xsl:when test="member/@status != 'activated'">
       <p>You must click on the button below to activate your account before being able to use PageSeeder.</p>
       <p>
-        <xsl:variable name="link" select="concat(@hosturl, '/email/activate?member=', member/@id, '&amp;token=', @token)"/>
+        <xsl:variable name="link" select="concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token)"/>
         <xsl:sequence select="f:button($link, 'Activate my account')"/>
       </p>
     </xsl:when>

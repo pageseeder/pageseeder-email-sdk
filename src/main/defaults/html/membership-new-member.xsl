@@ -53,7 +53,7 @@
         Finally you should <b>Accept</b> or <b>Decline</b> the invitation on the My Details page.
       </xsl:if>
     </p>
-    <xsl:sequence select="f:button(concat(@hosturl, '/email/activate?member=', membership/member/@id, '&amp;token=', @token), 'Activate your account')"/>
+    <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token), 'Activate your account')"/>
   </xsl:if>
 
 </xsl:template>

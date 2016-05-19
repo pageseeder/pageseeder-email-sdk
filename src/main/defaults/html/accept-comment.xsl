@@ -1,6 +1,8 @@
 <?xml version="1.0"?> 
 <!-- 
   Email sent to a moderator to accept/reject a comment.
+
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"

@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!-- 
   Email sent to the user after they change their email address.
+
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"

@@ -26,7 +26,7 @@
 
   <xsl:choose>
     <xsl:when test="inviter">
-      <p class="lead"><b><xsl:value-of select="inviter/fullname"/></b> has added you <xsl:value-of select="$project-group"/><b><xsl:value-of select="membership/(group|project)/@name" /></b>.</p>
+      <p class="lead"><b><xsl:value-of select="inviter/fullname"/></b> has added you to <xsl:value-of select="$project-group"/><b><xsl:value-of select="membership/(group|project)/@name" /></b>.</p>
     </xsl:when>
     <xsl:otherwise>
       <p class="lead">You have now joined <xsl:value-of select="$project-group"/><b><xsl:value-of select="membership/(group|project)/@name" /></b>.</p>

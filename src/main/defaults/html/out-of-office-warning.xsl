@@ -2,6 +2,8 @@
 <!--
   Email sent to the user when an "Out of Office" reply message was detected
   to warn him that its personal preferences will be changed to "On vacation".
+  
+  @version 5.8900
 -->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"

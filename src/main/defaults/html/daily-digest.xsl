@@ -150,7 +150,7 @@
                   <xsl:variable name="download" select="concat($notification/@hosturl, '/uri/', @id, '?behavior=download')" />
                   <td style="font-size: 13px;"><xsl:sequence select="f:link($view, displaytitle)" /></td>
                   <td width="50" style="font-size: 13px;text-align:right">
-                    <xsl:if test="not(starts-with(@behavior, 'standard-')) and not(@mediatype = 'folder')">
+                    <xsl:if test="not(@mediatype = 'folder')">
                       <xsl:sequence select="f:link($download, 'Download')" />
                     </xsl:if>
                   </td>

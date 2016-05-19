@@ -1,7 +1,9 @@
 <?xml version="1.0"?> 
 <!--
-  Template used to produce an email used to notify the user that their password was updated. 
- -->
+  Template used to produce an email used to notify the user that their password was updated.
+
+  @version 5.8900
+-->
 <xsl:stylesheet version="2.0"
         xmlns:f="http://www.pageseeder.com/function"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
