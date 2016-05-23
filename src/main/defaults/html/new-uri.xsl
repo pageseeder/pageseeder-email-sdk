@@ -16,7 +16,7 @@
   <meta name="list-id"            content="{group/@name}.{@emaildomain}" />
   <meta name="list-name"          content="{group/@description}" />
   <meta name="list-help"          content="{@hosturl}/page/{group/@name}/home" />
-  <meta name="list-unsubscribe"   content="{@hosturl}/page/{group/@name}/preferences/mygroups" />
+  <meta name="list-unsubscribe"   content="{@hosturl}/email/mygroups" />
   <meta name="list-post"          content="{@hosturl}/page/{group/@name}/comment/new" />
   <meta name="list-archive"       content="{@hosturl}/page/{group/@name}/comments" />
   <title>
