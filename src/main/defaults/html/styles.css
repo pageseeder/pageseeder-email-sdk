@@ -108,8 +108,8 @@ a { color: #50A6DD; }
 .digest-summary table {background: #fbe2d9; border: 2px solid #fbe2d9; width:100%;}
 .digest-summary th {padding: 4px; color: #DD4814;}
 .digest-summary td {padding: 4px; color: #000000;}
-.digest-time  {vertical-align:top; padding: 6px; color: #DD4814; font-size: 24px; border-top: 2px solid #ccc}
-.digest-title {vertical-align:top; padding: 6px; color: #000000; font-size: 24px; border-top: 2px solid #ccc; text-align: left; font-weight: normal}
+.digest-time  {vertical-align:top; padding: 6px; color: #DD4814; font-size: 20px; border-top: 2px solid #ccc}
+.digest-title {vertical-align:top; padding: 6px; color: #000000; font-size: 20px; border-top: 2px solid #ccc; text-align: left; font-weight: normal}
 .ampm {color: #f4a386; font-size: 20px;}
 
 /** Embedded PageSeeder messages */

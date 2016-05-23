@@ -44,6 +44,7 @@ You must follow the link below to activate your account before being able to use
   <xsl:value-of select="concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token)"/>
 </xsl:if>
 
+NOTE: this link will be valid for the next 48 hours.
 </xsl:template>
 
 <!-- 

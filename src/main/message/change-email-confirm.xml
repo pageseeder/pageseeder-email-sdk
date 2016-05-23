@@ -9,7 +9,7 @@
 
   <notification template="change-email-confirm" description="Change email confirmation"
                 newemail="jjones@new-example.org" 
-                 subject="PageSeeder email change confirmation"
+                 subject="Confirm your email change"
                      key="sdf21asdf571gf7dfg2" 
                    token="ujHidAn9kKjObQuVbl_vLMc9npOjAKj2">
     <member id="12" firstname="John" lastname="Jones"

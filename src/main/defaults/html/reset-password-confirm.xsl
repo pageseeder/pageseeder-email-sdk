@@ -14,7 +14,7 @@
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='reset-password-confirm']" mode="meta">
-  <title>PAGESEEDER: Password reset</title>
+  <title>Update your password</title>
 </xsl:template>
 
 <!-- Banner -->
@@ -26,23 +26,30 @@
 <xsl:template match="notification[@template='reset-password-confirm']" mode="body">
   <h3>Hi <xsl:value-of select="member/@firstname" />,</h3>
 
-  <p>A password reset has been requested for the following PageSeeder site: </p>
-  <p><a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a></p>
-
   <xsl:choose>
     <xsl:when test="@reason='forced'">
-      <p>You have been made an administrator and to keep using PageSeeder you must click on the button below.</p>
+      <p>You are now an administrator!</p>
+      <p>As a security precaution, we have reset your password and ask you enter one that meets our security requirements.</p>
     </xsl:when>
     <xsl:when test="@reason='admin'">
-      <p>An administrator has requested your password be reset, to do this please click on the button below.</p>
+      <p>An administrator has reset your password.</p>
+      <p>You can enter a new one by clicking on the button below.</p>
     </xsl:when>
     <xsl:otherwise>
-      <p>If you requested your password to be reset, please click on the button below.</p>
+      <p>It looks like you requested a new password.</p>
+      <p>If that sounds right, you can enter new password by clicking on the button below.</p>
     </xsl:otherwise>
   </xsl:choose>
 
   <xsl:variable name="link" select="concat(@hosturl,'/email/changepassword?member=',member/@id,'&amp;token=',@token)"/>
   <xsl:sequence select="f:button($link, 'Reset password')"/>
+
+  <xsl:if test="@reason='forced'">
+    <p class="last">We do not (and should not!) know your password, so if your current password is strong
+    enough you might be able to reuse.</p>
+  </xsl:if>
+
+  <p class="last">This link will be valid for the next 12 hours.</p>
 
 </xsl:template>
 

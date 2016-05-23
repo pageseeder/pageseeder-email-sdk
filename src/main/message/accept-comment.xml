@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
   Sample XML for Moderator notification to accept a comment.
- -->
+-->
 <notifications>
 
   <notification template="accept-comment" 

@@ -13,7 +13,7 @@
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='change-password']" mode="meta">
-  <title>PAGESEEDER: Password updated</title>
+  <title>Your password has been updated</title>
 </xsl:template>
 
 <!-- Banner -->

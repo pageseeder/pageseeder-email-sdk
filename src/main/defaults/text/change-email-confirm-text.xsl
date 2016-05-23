@@ -23,6 +23,8 @@ Until you confirm this change, you will need to use your current email address t
 CONFIRM EMAIL CHANGE:
   <xsl:value-of select="concat(@hosturl, '/email/changeemail?member=', member/@id, '&amp;token=', @token)" />
 
+NOTE: this link will be valid for the next 12 hours.
+
 -----------------------------------------------------------------------
 SUMMARY
 Old email:  <xsl:value-of select="member/@email" />

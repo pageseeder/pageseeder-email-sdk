@@ -56,6 +56,8 @@
     <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token), 'Activate your account')"/>
   </xsl:if>
 
+  <p class="last">This link will be valid for the next 48 hours.</p>
+
 </xsl:template>
 
 <!-- Footer -->

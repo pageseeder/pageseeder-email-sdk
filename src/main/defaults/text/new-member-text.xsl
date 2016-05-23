@@ -31,6 +31,8 @@ You can login using your email *<xsl:value-of select="member/@email"/>*<xsl:if
   <xsl:otherwise>You must click on the button below to get started</xsl:otherwise>
 </xsl:choose> before being able to use PageSeeder.
   <xsl:value-of select="concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token)"/>
+
+NOTE: this link will be valid for the next 48 hours.  
 </xsl:template>
 
 </xsl:stylesheet>

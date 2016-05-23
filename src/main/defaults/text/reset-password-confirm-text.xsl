@@ -23,15 +23,22 @@ A password reset has been requested for the following PageSeeder site:
 You have been made an administrator and to keep using PageSeeder you must click on the link below.
 </xsl:when>
 <xsl:when test="@reason='admin'">
-An administrator has requested your password be reset, to do this please click on the link below.
+An administrator has reset your password.
+You can enter a new one by following the link below.
 </xsl:when>
 <xsl:otherwise>
-If you requested your password to be reset, please click on the link below.
+It looks like you requested a new password.
+If that sounds right, you can enter new password by following the link below.
 </xsl:otherwise>
 </xsl:choose>
-RESET PASSWORD:
+UPDATE YOUR PASSWORD:
   <xsl:value-of select="concat(@hosturl,'/email/changepassword?member=',member/@id,'&amp;token=',@token)" />
 
+This link will be valid for the next 12 hours.
+
+<xsl:if test="@reason='forced'">
+Note: we do not (and should not!) know your password, so if your current password is strong enough you might be able to reuse.
+</xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

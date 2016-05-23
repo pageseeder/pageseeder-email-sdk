@@ -13,7 +13,7 @@
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='change-email-confirm']" mode="meta">
-  <title>PageSeeder email change confirmation</title>
+  <title>Confirm your email change</title>
 </xsl:template>
 
 <!-- Banner -->
@@ -37,6 +37,8 @@
 
   <xsl:variable name="link" select="concat(@hosturl, '/email/changeemail?member=', member/@id, '&amp;token=', @token)"/>
   <xsl:sequence select="f:button($link, 'Change email')"/>
+
+  <p class="last">This link will be valid for the next 12 hours.</p>
 
 </xsl:template>
 

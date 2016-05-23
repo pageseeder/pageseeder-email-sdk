@@ -48,6 +48,8 @@
       <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token), 'Get started')"/>
     </xsl:otherwise>
   </xsl:choose>
+  
+  <p class="last">This link will be valid for the next 48 hours.</p>
 </xsl:template>
 
 </xsl:stylesheet>
