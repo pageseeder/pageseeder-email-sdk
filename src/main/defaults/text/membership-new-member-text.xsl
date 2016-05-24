@@ -26,25 +26,13 @@ available on the site.
          NAME:  <xsl:value-of select="membership/(group|project)/@name" />
   DESCRIPTION:  <xsl:value-of select="membership/(group|project)/@description" />
 
-You can login using your email *<xsl:value-of select="membership/member/@email"/>*.
-<!-- Check if activated member was invited to group -->
-<xsl:if test="membership/member/@status = 'activated' and membership/@status = 'invited'">
-To respond to this invitation follow the link below:
-  <xsl:value-of select="concat(@hosturl, '/email/myinvitation?group=', membership/(group|project)/@name)"/>
-
-Disregard this email, if you do not wish to join.
-</xsl:if>
-
-<!-- Check if member is activated -->
-<xsl:if test="membership/member/@status != 'activated'">
-You must follow the link below to activate your account before being able to use PageSeeder.
+You must follow the link below to get started before being able to use PageSeeder.
   <xsl:value-of select="concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token)"/>
-</xsl:if>
 
 NOTE: this link will be valid for the next 48 hours.
 
 -----------------------------------------------------------------------
-You have received this email because a PageSeeder member created an account for you and invited you to join group <xsl:value-of select="membership/(group|project)/@name" /> on <xsl:value-of select="@hosturl"/>
+You have received this email because a PageSeeder member created an account for you and invited you to join group <xsl:value-of select="membership/(group|project)/@name" /> on <xsl:value-of select="concat(@hosturl, '/')"/>
 
 This is an automatically generated email - please do not reply to this email.
 </xsl:template>

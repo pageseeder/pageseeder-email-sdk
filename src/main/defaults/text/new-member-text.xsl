@@ -22,10 +22,6 @@ Hi <xsl:value-of select="member/@firstname" />,
 
 PageSeeder allows groups of people to collaborate on different documents available on the site.
 
-You can login using your email *<xsl:value-of select="member/@email"/>*<xsl:if 
- test="not(string(member/@username) = '' or member/@username = member/@email)">
- or your username <b><xsl:value-of select="member/@username" /></b>
-</xsl:if>.
 <xsl:choose>
   <xsl:when test="member/@status != 'activated'">You must follow the link below to activate your account</xsl:when>
   <xsl:otherwise>You must click on the button below to get started</xsl:otherwise>
