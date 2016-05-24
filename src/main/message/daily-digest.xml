@@ -8,7 +8,7 @@
              description="Daily digest" 
                  subject="[acme-test] Daily notification">
     <comments>
-      <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
+      <comment discussionid="120" id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
         <title>Cavern stolen!</title>
         <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
           <fullname>John Jones</fullname>
@@ -18,12 +18,12 @@
           <group id="3" name="acme-test" />
         </context>
       </comment>
-      <comment id="124" contentrole="Comment" created="2012-03-08T10:27:00+10:00">
+      <comment discussionid="120" id="124" contentrole="Comment" created="2012-03-08T10:27:00+10:00">
         <title>Cavern stolen!</title>
         <author id="12" firstname="Joan" surname="Smith" email="jsmith@example.org" username="jsmith">
           <fullname>Joan Smith</fullname>
         </author>
-        <content type="text/plain">Sesame opened the door</content>
+        <content type="text/plain">Sesame closed the door.</content>
         <context fragment="default">
           <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/acme/test/folder/file.psml"
                decodedpath="/ps/acme/test/folder/file.psml" external="false"
@@ -34,21 +34,7 @@
            </uri>
         </context>
       </comment>
-      <comment id="125" contentrole="Comment" created="2012-03-08T14:59:00+10:00"
-               status="Open" priority="High" due="2012-05-10T00:00:00+10:00">
-        <title>Cavern stolen!</title>
-        <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
-          <fullname>John Jones</fullname>
-        </author>
-        <assignedto id="15" firstname="Jack" surname="Johnson" email="jjohnson@example.org" username="jjohnson">
-          <fullname>Jack Johnson</fullname>
-        </assignedto>
-        <content type="text/plain">Sesame opened the door</content>
-        <context>
-          <group id="3" name="acme-test" />
-        </context>
-      </comment>
-      <comment id="126" contentrole="Comment" created="2012-03-08T12:37:00+10:00">
+      <comment discussionid="126" id="126" contentrole="Comment" created="2012-03-08T12:37:00+10:00">
         <title>Some documents to be discussed</title>
         <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
           <fullname>John Jones</fullname>
@@ -73,6 +59,20 @@
             <displaytitle>An image</displaytitle>
           </uri>
         </attachment>
+        <context>
+          <group id="3" name="acme-test" />
+        </context>
+      </comment>
+      <comment discussionid="120" id="125" contentrole="Comment" created="2012-03-08T14:59:00+10:00"
+               status="Open" priority="High" due="2012-05-10T00:00:00+10:00">
+        <title>Cavern stolen!</title>
+        <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
+          <fullname>John Jones</fullname>
+        </author>
+        <assignedto id="15" firstname="Jack" surname="Johnson" email="jjohnson@example.org" username="jjohnson">
+          <fullname>Jack Johnson</fullname>
+        </assignedto>
+        <content type="text/plain">Sesame reopened the door</content>
         <context>
           <group id="3" name="acme-test" />
         </context>

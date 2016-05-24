@@ -207,14 +207,14 @@
 <xsl:template match="comment" mode="attachments">
 <xsl:if test="attachment/uri">
   <h4 class="subtitle">File attachments</h4>
-  <table width="100%" cellpadding="2" cellspacing="0" border="0" style="border-collapse: collapse"><tbody>
+  <table width="100%" cellpadding="2" cellspacing="0" border="0"><tbody>
     <xsl:for-each select="attachment/uri">
       <tr>
-        <td style="width:20px;font-size:13px;"><img src="{$images-url}/{f:media-type-icon(.)}" border="0" alt="" /></td>
+        <td class="attachment-icon"><img src="{$images-url}/{f:media-type-icon(.)}" border="0" alt="" /></td>
         <xsl:variable name="view"     select="concat(/notification/@hosturl, '/page/', ../../../group/@name, '/uri/', @id)" />
         <xsl:variable name="download" select="concat(/notification/@hosturl, '/uri/', @id, '?behavior=download')" />
-        <td style="font-size: 13px;"><xsl:sequence select="f:link($view, displaytitle)" /></td>
-        <td width="50" style="font-size: 13px;text-align:right">
+        <td class="attachment-title"><xsl:sequence select="f:link($view, displaytitle)" /></td>
+        <td class="attachment-download">
           <xsl:if test="not(@mediatype = 'folder')">
             <xsl:sequence select="f:link($download, 'Download')" />
           </xsl:if>

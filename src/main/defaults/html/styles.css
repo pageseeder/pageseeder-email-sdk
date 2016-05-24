@@ -108,9 +108,21 @@ a { color: #50A6DD; }
 .digest-summary table {background: #fbe2d9; border: 2px solid #fbe2d9; width:100%;}
 .digest-summary th {padding: 4px; color: #DD4814;}
 .digest-summary td {padding: 4px; color: #000000;}
-.digest-time  {vertical-align:top; padding: 6px; color: #DD4814; font-size: 20px; border-top: 2px solid #ccc}
-.digest-title {vertical-align:top; padding: 6px; color: #000000; font-size: 20px; border-top: 2px solid #ccc; text-align: left; font-weight: normal}
-.ampm {color: #f4a386; font-size: 20px;}
+.digest-title {vertical-align:top; padding: 6px; color: #000000; font-size: 20px; border-top: 3px solid #ccc; text-align: left; font-weight: normal}
+.digest-time  {vertical-align:top; padding: 3px; color: #DD4814; font-size: 14px; width: 60px}
+.digest-comment {padding-bottom: 10px}
+.ampm {color: #f4a386; font-size: 14px;}
+.digest-author {vertical-align:top; font-size: 13px; padding: 4px;}
+.digest-content {vertical-align:top; font-size: 13px; padding: 10px 4px;}
+.digest-attachments-title {vertical-align:top; font-size: 13px; padding: 24px 4px 4px; border-bottom: 2px solid #ddd; color: #aaa}
+.digest-attachments {vertical-align:top; font-size: 13px; padding: 4px; border-bottom: 2px solid #ddd;}
+.digest-context-title {vertical-align:top; font-size: 13px; padding: 24px 4px 4px; border-bottom: 2px solid #ddd; color: #aaa}
+.digest-context {vertical-align:top; font-size: 13px; padding: 4px; border-bottom: 2px solid #ddd;}
+
+/* Attachments*/
+.attachment-icon {width:20px; font-size:13px;}
+.attachment-title {font-size:13px; padding: 4px}
+.attachment-download {width: 80px; font-size:13px; padding: 4px; text-align:right}
 
 /** Embedded PageSeeder messages */
 .ps-message { width: 100%; vertical-align:top; border-top: 2px solid #e7e7e7; border-bottom: 2px solid #e7e7e7; border-collapse: collapse; background-color:white;}

@@ -29,7 +29,7 @@
   <xsl:choose>
     <xsl:when test="@reason='forced'">
       <p>You are now an administrator!</p>
-      <p>As a security precaution, we have reset your password and ask you enter one that meets our security requirements.</p>
+      <p>As a security precaution, we have reset your password and ask you to enter one that meets our security requirements.</p>
     </xsl:when>
     <xsl:when test="@reason='admin'">
       <p>An administrator has reset your password.</p>

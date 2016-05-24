@@ -31,32 +31,44 @@
 
   <div class="digest-summary">
     <table cellspacing="0" cellpadding="0">
-      <xsl:for-each select="comment">
+      <xsl:for-each-group select="comment" group-by="@discussionid">
         <xsl:sort select="@created" order="descending"/>
         <tr>
-          <th><xsl:value-of select="translate(format-dateTime(@created, '[h]:[m01] [PN]'),'.','')"/></th>
-          <td><b><xsl:value-of select="title" /></b> by 
-          <i><xsl:value-of select="author/fullname" /></i></td>
+          <th width="80">&#xa0;</th>
+          <td><b><xsl:value-of select="title" /></b></td>
         </tr>
-      </xsl:for-each>
+        <xsl:for-each select="current-group()">
+          <tr>
+            <th><xsl:value-of select="translate(format-dateTime(@created, '[h]:[m01] [PN]'),'.','')"/></th>
+            <td><xsl:value-of select="if (position() = 1) then 'Comment' else 'Reply'"/> by <i><xsl:value-of select="author/fullname" /></i></td>
+          </tr>
+        </xsl:for-each>
+      </xsl:for-each-group>
     </table>
   </div>
 
   <table cellspacing="0" cellpadding="0" style="vertical-align:top; width:100%; border-collapse: collapse; background: white">
-    <xsl:for-each select="comment">
+    <xsl:for-each-group select="comment" group-by="@discussionid">
       <xsl:sort select="@created" order="descending"/>
       <xsl:variable name="notification" select="ancestor::notification"/>
       <xsl:variable name="href" select="concat($notification/@hosturl, '/page/', $notification/group/@name, '/comments/', @id)"/>
       <tr>
-        <th class="digest-time"><xsl:value-of select="format-dateTime(@created, '[h]:[m01]')"/>
-        <div class="ampm"><xsl:value-of select="translate(format-dateTime(@created, '[PN]'), '.','')"/></div></th>
+        <th class="digest-title"></th>
         <th class="digest-title"><a href="{$notification/@hosturl}/page/{$notification/group/@name}/comments/{@id}"><xsl:value-of select="title" /></a></th>
       </tr>
+      <xsl:for-each select="current-group()">
+        <tr>
+          <th class="digest-time"><xsl:value-of select="format-dateTime(@created, '[h]:[m01]')"/>
+          <div class="ampm"><xsl:value-of select="translate(format-dateTime(@created, '[PN]'), '.','')"/></div></th>
+          <td class="digest-comment">
+            <xsl:apply-templates select="." mode="digest-html" />
+          </td>
+        </tr>
+      </xsl:for-each>
       <tr>
         <td></td>
         <td>
-          <xsl:apply-templates select="." mode="digest-html" />
-          <p style="color: #999999"><i>You can reply to this message <xsl:text/>
+          <p style="color: #999999"><i>You can reply to this comment <xsl:text/>
             <xsl:sequence select="f:link($href, 'online')" />
             <xsl:if test="/notification/@emaildomain">
               <xsl:variable name="email">
@@ -73,7 +85,7 @@
       <tr>
         <td colspan="2">&#160;</td>
       </tr>
-    </xsl:for-each>
+    </xsl:for-each-group>
   </table>
 
   <p class="timezone">Dates and times display for timezone <xsl:value-of select="format-date(current-date(), '[z]')"/></p>
@@ -85,6 +97,7 @@
 <xsl:template match="comment" mode="digest-html">
   <table cellspacing="0" cellpadding="0" style="vertical-align:top; width:100%; border-collapse: collapse; background: white">
     <tbody>
+      <!-- If it's a task -->
       <xsl:if test="@status">
         <tr>
           <td style="background:#e7e7e7;font-size: 13px; padding: 10px 2px">
@@ -107,12 +120,12 @@
 
       <!-- Author and content -->
       <tr>
-        <td style="vertical-align:top; font-size: 13px; padding: 4px;">
+        <td class="digest-author">
           <b><xsl:value-of select="author/fullname" /></b>
         </td>
       </tr>
       <tr>
-        <td style="vertical-align:top; font-size: 13px; padding: 4px">
+        <td class="digest-content">
           <xsl:analyze-string select="content[contains(@type,'text/plain')]" regex="\n" flags="m">
             <xsl:matching-substring><br/></xsl:matching-substring>
             <xsl:non-matching-substring><xsl:value-of select="." /></xsl:non-matching-substring>
@@ -122,8 +135,10 @@
 
       <xsl:if test="context/uri">
         <tr>
-          <td style="vertical-align:top; font-size: 13px; padding: 4px">
-            <p><b>Context</b></p>
+          <td class="digest-context-title"><b>Context</b></td>
+        </tr>
+        <tr>
+          <td class="digest-context">
             <xsl:value-of select="context/uri/displaytitle" />
           </td>
         </tr>
@@ -133,16 +148,20 @@
       <xsl:if test="$attachments">
         <xsl:variable name="notification" select="ancestor::notification"/>
         <tr>
-          <td style="vertical-align:top; font-size: 13px; padding: 4px">
-            <p><b>Attachment<xsl:value-of select="if (count($attachments) > 1) then 's' else ''" /></b></p>
-            <table width="100%" cellpadding="2" cellspacing="0" border="0" style="border-collapse: collapse"><tbody>
+          <td class="digest-attachments-title">
+            <b>Attachment<xsl:value-of select="if (count($attachments) > 1) then 's' else ''" /></b>
+          </td>
+        </tr>
+        <tr>
+          <td class="digest-attachments">
+            <table width="100%" cellpadding="2" cellspacing="0" border="0"><tbody>
               <xsl:for-each select="$attachments">
                 <tr>
-                  <td style="width:14px;font-size:13px;"><img src="{$images-url}/{f:media-type-icon(.)}" border="0" alt="" /></td>
+                  <td class="attachment-icon"><img src="{$images-url}/{f:media-type-icon(.)}" border="0" alt="" /></td>
                   <xsl:variable name="view"     select="concat($notification/@hosturl, '/page/', $notification/group/@name, '/uri/', @id)" />
                   <xsl:variable name="download" select="concat($notification/@hosturl, '/uri/', @id, '?behavior=download')" />
-                  <td style="font-size: 13px;"><xsl:sequence select="f:link($view, displaytitle)" /></td>
-                  <td width="60" style="font-size: 13px;text-align:right">
+                  <td class="attachment-title"><xsl:sequence select="f:link($view, displaytitle)" /></td>
+                  <td class="attachment-download">
                     <xsl:if test="not(@mediatype = 'folder')">
                       <xsl:sequence select="f:link($download, 'Download')" />
                     </xsl:if>
