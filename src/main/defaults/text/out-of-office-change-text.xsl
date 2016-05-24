@@ -30,6 +30,13 @@ SUBJECT: <xsl:value-of select="title" />
 </xsl:text>
 <xsl:value-of select="f:comment-content(.)"/>
 </xsl:for-each>
+
+----------------------------------------------------------------------
+You received this message because you are part of group <xsl:value-of select="group/@name"/>.
+If you wish to change your notification settings, you can do so by visiting your subscription options
+  <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

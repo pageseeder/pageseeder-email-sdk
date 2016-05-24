@@ -28,6 +28,12 @@ To respond to this invitation follow the link below:
   <xsl:value-of select="concat(@hosturl, '/email/myinvitation?group=', membership/(group|project)/@name)"/>
 
 Disregard this email, if you do not wish to join.
+
+
+-----------------------------------------------------------------------
+You have received this email because a PageSeeder member invited you to join group <xsl:value-of select="membership/(group|project)/@name" /> on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

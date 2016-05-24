@@ -32,7 +32,12 @@ You can login using your email *<xsl:value-of select="member/@email"/>*<xsl:if
 </xsl:choose> before being able to use PageSeeder.
   <xsl:value-of select="concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token)"/>
 
-NOTE: this link will be valid for the next 48 hours.  
+NOTE: this link will be valid for the next 48 hours.
+
+-----------------------------------------------------------------------
+You have received this email because a PageSeeder member created an account for you on <xsl:value-of select="concat(@hosturl, '/')"/>.
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

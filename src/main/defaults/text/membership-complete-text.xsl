@@ -52,6 +52,11 @@ NOTE: You may need to logout from PageSeeder and login again to gain access.
 
 To change your notification settings please visit:
   <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
+  
+-----------------------------------------------------------------------
+This email has been sent to you because you have an account on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

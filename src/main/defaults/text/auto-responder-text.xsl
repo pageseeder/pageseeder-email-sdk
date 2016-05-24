@@ -25,6 +25,11 @@ AUTHOR:  <xsl:value-of select="f:author(author)" />
 </xsl:text>
 <xsl:value-of select="f:comment-content(.)"/>
 </xsl:for-each>
+
+-----------------------------------------------------------------------
+You received this message because the email address <xsl:value-of select="comment/author/@email"/> was used to post a message on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

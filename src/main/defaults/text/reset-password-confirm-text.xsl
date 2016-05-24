@@ -39,6 +39,11 @@ This link will be valid for the next 12 hours.
 <xsl:if test="@reason='forced'">
 Note: we do not (and should not!) know your password, so if your current password is strong enough you might be able to reuse.
 </xsl:if>
+
+-----------------------------------------------------------------------
+This email has been sent to you because you have an account on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

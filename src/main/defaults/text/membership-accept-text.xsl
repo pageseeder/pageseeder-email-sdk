@@ -14,10 +14,9 @@
 <xsl:template match="/notification[@template='membership-accept']">
 Hi <xsl:value-of select="moderator/@firstname"/>,
 
-Membership in <xsl:value-of select="membership/(group|project)/@name" /> has been configured for moderation
-and you have been designated as the *moderator*.
+The person below would like to join the group <xsl:value-of select="membership/(group|project)/@name" /> that you are moderating. 
 
-To accept the application of the following person and trigger a confirmation message to them, follow the link below:
+To accept the request of the following person and trigger a confirmation message to them, follow the link below:
   <xsl:value-of select="concat(@hosturl, '/email/moderatemember?group=', membership/(group|project)/@name, '&amp;member=', membership/member/@id)"/>
 
 -----------------------------------------------------------------------
@@ -32,10 +31,14 @@ EMAIL:    <xsl:value-of select="member/@email" />
 USERNAME: <xsl:value-of select="member/@username" />
 </xsl:for-each>
 
-To reject the above application, or to defer your decision, simply ignore this message.
+To reject the above request, or to defer your decision, simply ignore this message.
 
-This application will remain available under the 'Pending' section of the
-Members page until a time that it is either 'Accepted' or 'Permanently Removed'.
+This request will remain available under the 'Pending' section of the Members page until a time that it is either 'Accepted' or 'Permanently Removed'.
+
+-----------------------------------------------------------------------
+You have been sent this email because you are the moderator of group <xsl:value-of select="group/@name" /> on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email. 
 </xsl:template>
 
 </xsl:stylesheet>

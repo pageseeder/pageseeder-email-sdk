@@ -14,7 +14,8 @@ exclude-result-prefixes="#all">
 <xsl:template match="/notification[@template='accept-comment']">
 Hi <xsl:value-of select="comment/assignedto/@firstname"/>,
 
-The message below has been posted to the group <xsl:value-of select="group/@name" /> that you are moderating. 
+The comment below has been posted to the group <xsl:value-of select="group/@name" /> that you are moderating.
+
 There are several options for handling this message, they are as follows:
 
 ACCEPT - to accept this message click the link below:
@@ -41,6 +42,11 @@ VIEW/DOWNLOAD: <xsl:value-of select="f:attachment-link(uri)"/><xsl:text>
 <xsl:text>
 </xsl:text>
 <xsl:value-of select="f:comment-content(comment)"/>
+
+-----------------------------------------------------------------------
+You have been sent this email because you are the moderator of group <xsl:value-of select="group/@name" /> on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

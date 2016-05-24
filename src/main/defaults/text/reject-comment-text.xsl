@@ -30,6 +30,11 @@ SUBJECT: <xsl:value-of select="comment/title" />
 
 </xsl:text>
 <xsl:value-of select="f:comment-content(comment)"/>
+
+----------------------------------------------------------------------
+You received this message because you attempted to post a message on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

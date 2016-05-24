@@ -1,33 +1,6 @@
 <?xml version="1.0"?>
 <!--
   Template used for the daily digest notification
-  The input XML format is:
-  <notification name="membership-confirm" emaildomain="my-host.com" hosturl="https://www.my-host.com">
-    <comments>
-      <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
-        <title>Cavern stolen!</title>
-        <author id="12" firstname="John" surname="Jones" email="jjones@email.com" username="jjones">
-          <fullname>John Jones</fullname>
-        </author>
-        <content type="text/plain">Sesame opened the door</content>
-        <context>
-          <group id="3" name="acme-test" />
-        </context>
-      </comment>
-      <comment id="123" contentrole="Comment" created="2012-03-08T12:34:00+10:00">
-        <title>Cavern stolen!</title>
-        <author id="12" firstname="John" surname="Jones" email="jjones@email.com" username="jjones">
-          <fullname>John Jones</fullname>
-        </author>
-        <content type="text/plain">Sesame opened the door</content>
-        <context>
-          <group id="3" name="acme-test" />
-        </context>
-      </comment>
-      ...
-    </comments>
-    <group id="3" name="acme-test" description="ACME group" owner="acme" />
-  </notification>
 -->
 <xsl:stylesheet version="2.0"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -35,7 +8,7 @@
                 xmlns:psf="http://www.pageseeder.com/function"
                 exclude-result-prefixes="xs psf">
 
-<xsl:template match="/notification">
+<xsl:template match="/notification[@template='daily-digest']">
   <xsl:text>THESE COMMENTS HAVE BEEN ADDED TO GROUP </xsl:text>
   <xsl:value-of select="group/@name" /> IN THE LAST 24 HOURS
 <xsl:if test="@emaildomain">
@@ -149,6 +122,12 @@ REPLY - via email:
   <xsl:text>?subject=Reply</xsl:text>
 </xsl:if>
   </xsl:for-each>
+  
+----------------------------------------------------------------------
+You received this message because you are part of group <xsl:value-of select="group/@name"/>.
+If you wish to change your notification settings, you can do so by visiting your subscription options
+  <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
+
 </xsl:template>
 
 </xsl:stylesheet>

@@ -22,6 +22,10 @@ If you changed your password, you can disregard this email. It was only sent to 
 
 If you didn't change your password, your account might have been compromised and we recommend that you reset your password as soon as possible.
 
+-----------------------------------------------------------------------
+This email has been sent to you because you have an account on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

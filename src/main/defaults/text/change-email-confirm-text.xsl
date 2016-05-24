@@ -30,6 +30,10 @@ SUMMARY
 Old email:  <xsl:value-of select="member/@email" />
 New email:  <xsl:value-of select="@newemail" />
 
+-----------------------------------------------------------------------
+This email has been sent to you because you have an account on <xsl:value-of select="concat(@hosturl, '/')"/>
+
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>

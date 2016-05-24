@@ -28,9 +28,12 @@ LABELS: <xsl:value-of select="string-join(tokenize(version/labels, ','), ', ')" 
 DOCUMENT: <xsl:value-of select="uri/displaytitle" />&#xA0;
   <xsl:value-of select="concat(@hosturl, '/page/', group/@name, '/uri/', uri/@id)" />
 
-Change my notification preferences:
+----------------------------------------------------------------------
+You received this message because you are part of group <xsl:value-of select="group/@name"/>.
+If you wish to change your notification settings, you can do so by visiting your subscription options
   <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
 
+This is an automatically generated email - please do not reply to this email.
 </xsl:template>
 
 </xsl:stylesheet>
