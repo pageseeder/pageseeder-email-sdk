@@ -44,12 +44,12 @@
   <xsl:variable name="link" select="concat(@hosturl,'/email/changepassword?member=',member/@id,'&amp;token=',@token)"/>
   <xsl:sequence select="f:button($link, 'Reset password')"/>
 
+  <p class="last">This link will be valid for the next 12 hours.</p>
+
   <xsl:if test="@reason='forced'">
     <p class="last">We do not (and should not!) know your password, so if your current password is strong
-    enough you might be able to reuse.</p>
+    enough you might be able to reuse it.</p>
   </xsl:if>
-
-  <p class="last">This link will be valid for the next 12 hours.</p>
 
 </xsl:template>
 

@@ -29,27 +29,17 @@
   <p>PageSeeder allows groups of people to collaborate on different documents
      available on the site.</p>
 
-  <p>You can login using your email <b><xsl:value-of select="member/@email"/></b>
-  <xsl:if test="not(string(member/@username) = '' or member/@username = member/@email)">
-    or your username <b><xsl:value-of select="member/@username" /></b>
-  </xsl:if>.</p>
-
-  <!-- check if member is activated -->
-  <xsl:choose>
-    <xsl:when test="member/@status != 'activated'">
-      <p>You must click on the button below to activate your account before being able to use PageSeeder.</p>
-      <p>
-        <xsl:variable name="link" select="concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token)"/>
-        <xsl:sequence select="f:button($link, 'Activate my account')"/>
-      </p>
-    </xsl:when>
-    <xsl:otherwise>
-      <p>You must click on the button below to get started before being able to use PageSeeder.</p>
-      <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token), 'Get started')"/>
-    </xsl:otherwise>
-  </xsl:choose>
+  <p>You must click on the button below to get started before being able to use PageSeeder.</p>
+  <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', member/@id, '&amp;token=', @token), 'Get started')"/>
   
   <p class="last">This link will be valid for the next 48 hours.</p>
+</xsl:template>
+
+<!-- Footer -->
+<xsl:template match="notification[@template='new-member']" mode="footer">
+  <p>You have received this email because a PageSeeder member created an account for you on 
+  <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

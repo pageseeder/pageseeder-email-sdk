@@ -91,7 +91,7 @@
   <xsl:apply-templates select="comment" mode="attachments" />
 
   <!-- More info -->
-  <h4 class="subtitle">More information about this message</h4>
+  <h4 class="subtitle">&#xA0;</h4>
   <p>You can reply to this message
     <xsl:choose>
       <xsl:when test="comment/@contentrole='Workflow'">
@@ -107,6 +107,15 @@
     <p class="timezone">Dates and times display for timezone <xsl:value-of select="format-date(current-date(), '[z]')"/></p>
   </xsl:if>
 </xsl:template>
+
+
+<xsl:template match="notification[@template='new-comment']" mode="footer">
+  <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
+  <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
+  <p>If you wish to change your notification settings, you can do so by visiting <a
+    href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
+</xsl:template>
+
 
 <!-- ====================================================================== -->
 <!-- Supporting templates -->

@@ -46,10 +46,6 @@
   <!-- Labels -->
   <xsl:apply-templates select="version" mode="labels" />
 
-  <!-- XXX: Link to diff? -->
-
-  <!-- No reply -->
-  <p class="last">You cannot reply to this message.</p>
 </xsl:template>
 
 <!-- ====================================================================== -->

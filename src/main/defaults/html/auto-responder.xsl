@@ -35,14 +35,13 @@
         then concat(@hosturl, '/page/', comment/context/group/@name, '/comments')
         else concat(@hosturl, '/page/uri/', comment/context/uri/@id)"/>
   <p>View this comment in <a href="{$link}">context</a>.</p>
-
-  <p class="last">This is an automatically generated email - please do not respond to this email.</p>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='auto-responder']" mode="footer">
-  <p>You received this message because you attempted to post a 
-  message on <a href="@hosturl"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
+  <p>You received this message because the email address <i><xsl:value-of select="comment/author/@email"/></i> was used to
+  post a message on <a href="@hosturl"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

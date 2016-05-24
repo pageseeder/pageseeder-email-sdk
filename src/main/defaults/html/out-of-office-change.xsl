@@ -42,10 +42,6 @@
     <xsl:with-param name="subject" select="comment/title" />
     <xsl:with-param name="content" select="comment/content[contains(@type,'text/plain')]" />
   </xsl:call-template>
-
-  <p class="last">This is an automatically generated email - please do not respond to 
-  this email.</p>
-
 </xsl:template>
 
 </xsl:stylesheet>

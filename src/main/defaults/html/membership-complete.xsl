@@ -86,8 +86,11 @@
 
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-complete']" mode="footer">
+  <xsl:variable name="group" select="membership/(group|project)"/>
+  <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
   <p>If you wish to change your notification settings, you can do so by visiting <a
-    href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
+    href="{@hosturl}/email/mygroups">your subscription options</a></p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

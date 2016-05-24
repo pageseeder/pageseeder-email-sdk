@@ -11,7 +11,7 @@
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='membership-accept']" mode="meta">
-  <title>[<xsl:value-of select="membership/(group|project)/@name" />] <xsl:value-of select=" if (membership/project) then 'Project' else 'Group'"/> Registration request</title>
+  <title>[<xsl:value-of select="membership/(group|project)/@name" />] <xsl:value-of select=" if (membership/project) then 'Project' else 'Group'"/> registration request</title>
 </xsl:template>
 
 <xsl:template match="notification[@template='membership-accept']" mode="banner">
@@ -23,12 +23,8 @@
 
   <h3>Hi <xsl:value-of select="moderator/@firstname"/>,</h3>
 
-  <p>Membership in <xsl:value-of select="membership/(group|project)/@name" /> has been configured 
-  for moderation and you have been designated as the <b>moderator</b>.</p>
-
-  <p>To accept the application of the following person and trigger a confirmation message to them, click 'Accept'.</p>
-
-  <!-- TODO: Display the requested role of the new member? -->
+  <p>The person below would like to join the group <b><xsl:value-of select="membership/(group|project)/@name" /></b>
+  that you are moderating.</p>
 
   <table style="height:100px;width:100%" border="0" cellpadding="0" cellspacing="0"><tr>
     <td style="vertical-align: top;width:240px">
@@ -65,15 +61,17 @@
 
   <xsl:sequence select="f:button(concat(@hosturl, '/email/moderatemember?group=', membership/(group|project)/@name, '&amp;member=', membership/member/@id), 'Accept')"/>
 
-  <p class="last">To reject the above application, or to defer your decision, simply ignore this message.</p>
+  <p class="last">To reject the above request, or to defer your decision, simply ignore this message.</p>
 
-  <p>This application will remain available under the 'Pending'
+  <p>This request will remain available under the 'Pending'
      section of the Members page until a time that it is either 'Accepted' or 'Permanently Removed'.</p>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-accept']" mode="footer">
-  <p>You have been sent this email because you are a moderator.</p>
+  <p>You have been sent this email because you are the moderator of group <i><xsl:value-of select="membership/(group|project)/@name" /></i>
+  on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

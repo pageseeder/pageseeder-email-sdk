@@ -42,10 +42,4 @@
 
 </xsl:template>
 
-<!-- Footer -->
-<xsl:template match="notification[@template='change-email-confirm']" mode="footer">
-  <p>This email has been sent to you because you have an account on 
-  <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a></p>
-</xsl:template>
-
 </xsl:stylesheet>

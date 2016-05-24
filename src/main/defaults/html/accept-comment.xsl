@@ -25,7 +25,7 @@
 <xsl:template match="notification[@template='accept-comment']" mode="body">
   <h3>Hi <xsl:value-of select="comment/assignedto/@firstname"/>,</h3>
 
-  <p>The message below has been posted to the group <b><xsl:value-of select="group/@name" /></b> 
+  <p>The comment below has been posted to the group <b><xsl:value-of select="group/@name" /></b> 
   that you are moderating.</p>
 
   <xsl:call-template name="message">
@@ -38,13 +38,14 @@
 
   <xsl:sequence select="f:button(concat(@hosturl, '/email/moderatecommment?group=', group/@name, '&amp;comment=', comment/@id), 'Accept')"/>
 
-  <p class="last">Disregard this email, if you wish to prevent the message from being broadcast
-   to group members or lodged in the group archive.</p>
+  <p class="last">Disregard this email, if you do not want to accept this comment.</p>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='accept-comment']" mode="footer">
-  <p>You have been sent this email because you are the moderator of a group.</p>
+  <p>You have been sent this email because you are the moderator of group <i><xsl:value-of select="group/@name" /></i>
+  on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

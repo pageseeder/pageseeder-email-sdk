@@ -20,13 +20,6 @@
   <xsl:apply-templates select="comments" mode="html" />
 </xsl:template>
 
-<!-- Footer -->
-<xsl:template match="notification[@template='daily-digest']" mode="footer">
-  <p>You received this message because you are part of group <i><xsl:value-of select="group/@name" /></i>.</p>
-  <p>If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
-</xsl:template>
-
 <!-- ===================================================================================== -->
 <!-- Comments -->
 <!-- ===================================================================================== -->

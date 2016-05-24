@@ -25,36 +25,20 @@
     </xsl:choose>
   </h3>
 
-  <p class="lead">Welcome to PageSeeder at <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
-
-  <p>PageSeeder allows groups of people to collaborate on different documents
-     available on the site.</p>
-
-  <p>
+  <p class="lead">
   <xsl:choose>
     <xsl:when test="inviter"><b><xsl:value-of select="inviter/fullname"/></b> has <xsl:value-of 
     select="if (membership/@status = 'invited') then 'invited you to join' else 'added you to'"/></xsl:when>
     <xsl:otherwise>You have been <xsl:value-of 
     select="if (membership/@status = 'invited') then 'invited to join' else 'added to'"/></xsl:otherwise>
-  </xsl:choose> the <xsl:value-of select=" if (membership/project) then 'project ' else 'group '"/><b><xsl:value-of select="membership/(group|project)/@name" /></b>.</p>
+  </xsl:choose> the <xsl:value-of select=" if (membership/project) then 'project ' else 'group '"/><b><xsl:value-of select="membership/(group|project)/@name" /></b>
+  on PageSeeder at <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
 
-  <p>You can login using your email <b><xsl:value-of select="membership/member/@email"/></b>.</p>
+  <p>PageSeeder allows groups of people to collaborate on different documents
+     available on the site.</p>
 
-  <!-- Check if activated member was invited to group -->
-  <xsl:if test="membership/member/@status = 'activated' and membership/@status = 'invited'">
-    <xsl:sequence select="f:button(concat(@hosturl, '/email/myinvitation?group=', membership/(group|project)/@name), 'Accept the invitation')"/>
-    <p style="clear: both; margin-top: 10px"><i>Disregard this email, if you do not wish to join.</i></p>
-  </xsl:if>
-
-  <!-- Check if member is activated -->
-  <xsl:if test="membership/member/@status != 'activated'">
-    <p>You must click on the button below to activate your account before being able to use PageSeeder.
-      <xsl:if test="membership/@status = 'invited'">
-        Finally you should <b>Accept</b> or <b>Decline</b> the invitation on the My Details page.
-      </xsl:if>
-    </p>
-    <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token), 'Activate your account')"/>
-  </xsl:if>
+  <p>You must click on the button below to get started before being able to use PageSeeder.</p>
+  <xsl:sequence select="f:button(concat(@hosturl, '/email/getstarted?member=', membership/member/@id, '&amp;token=', @token), 'Get started')"/>
 
   <p class="last">This link will be valid for the next 48 hours.</p>
 
@@ -63,9 +47,9 @@
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-new-member']" mode="footer">
   <p>You have received this email because a PageSeeder member created an account for you and 
-  invited you to join a group.</p>
-  <p>If you have been assigned a random name you can change it by visiting 
-  <a href="{@hosturl}/email/mydetails">your personal details</a>.</p>
+  invited you to join group <i><xsl:value-of select="membership/(group|project)/@name" /></i> on 
+  <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

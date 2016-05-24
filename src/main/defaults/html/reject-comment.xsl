@@ -38,13 +38,13 @@
     <xsl:with-param name="uri"     select="comment/context/uri" />
   </xsl:call-template>
 
-  <p class="last">This is an automatically generated email - please do not respond 
-  to this email.</p>
-
 </xsl:template>
 
+<!-- Footer -->
 <xsl:template match="notification[@template='reject-comment']" mode="footer">
- <!-- TODO: text? -->
+  <p>You received this message because you attempted to post a message on 
+  <a href="@hosturl"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
+  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

@@ -46,15 +46,16 @@
 <xsl:choose>
   <xsl:when test="group and not(group/@name = 'admin') or comment/context/group">
     <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-    <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
-    <p>If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/email/mygroups">your subscription options</a></p>
+    <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>. 
+    If you wish to change your notification settings, you can do so by visiting <a
+      href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
   </xsl:when>
   <xsl:otherwise>
     <p>This email has been sent to you because you have an account on 
-    <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a></p>
+    <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
   </xsl:otherwise>
 </xsl:choose>
+<p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>
