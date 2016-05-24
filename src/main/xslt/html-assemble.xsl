@@ -111,7 +111,7 @@ body {
 .sdk-nav {
   font-family: sans-serif;
   position: fixed;
-  width: 20%;
+  width: 25%;
   height: 100%;
   box-sizing: border-box;
   background: #333;
@@ -125,7 +125,7 @@ body {
 
 .sdk-main {
   float:right;
-  width: 80%;
+  width: 75%;
   height: 100%;
 }
 
