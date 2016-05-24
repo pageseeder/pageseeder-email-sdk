@@ -42,7 +42,7 @@
   </xsl:choose>
 
   <xsl:variable name="link" select="concat(@hosturl,'/email/changepassword?member=',member/@id,'&amp;token=',@token)"/>
-  <xsl:sequence select="f:button($link, 'Reset password')"/>
+  <xsl:sequence select="f:button($link, 'Update password')"/>
 
   <p class="last">This link will be valid for the next 12 hours.</p>
 
