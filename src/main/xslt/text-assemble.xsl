@@ -153,6 +153,17 @@ body {
   background: #555;
 }
 
+.sdk-email-wrapper {
+  max-width: 40em;
+  margin: 0 auto
+}
+
+.sdk-plaintext {
+  padding: 1em;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 .sdk-menu li label {
   cursor: pointer;
   background: #777;
@@ -180,9 +191,9 @@ input[type='radio']:checked + .sdk-email {
   </head>
   <body style="padding:0;margin:0">
     <nav class="sdk-nav">
-      <h1>HTML email templates</h1>
+      <h1>Text email templates</h1>
       <ul class="sdk-menu">
-        <xsl:for-each-group select="collection(concat($from, '?select=*.html'))" group-by="replace(document-uri(), '.*/([a-z-]+)-\d+\.html', '$1')">
+        <xsl:for-each-group select="collection(concat($from, '?select=*.txt;unparsed=yes'))" group-by="replace(document-uri(), '.*/([a-z-]+)-\d+\.txt', '$1')">
           <xsl:variable name="template" select="current-grouping-key()"/>
           <li>
             <span><xsl:value-of select="$template"/></span>
@@ -193,64 +204,37 @@ input[type='radio']:checked + .sdk-email {
         </xsl:for-each-group>
       </ul>
     </nav>
+
     <main class="sdk-main">
       <input type="radio" name="tabs" checked=""/>
       <div class="sdk-email">
         <div class="help">Select template</div>
       </div>
-      <xsl:for-each select="collection(concat($from, '?select=*.html'))">
-        <xsl:variable name="ref"  select="replace(document-uri(), '.*/([a-z0-9-]+)\.html', '$1')"/>
-        <xsl:apply-templates select="document(document-uri())//xhtml:html" mode="assemble">
-          <xsl:with-param name="source" select="replace(replace(document-uri(), '/email/html/', '/build/message/'), 'html', 'xml')"/>
-          <xsl:with-param name="ref" select="$ref"/>
-        </xsl:apply-templates>
+      <xsl:for-each select="collection(concat($from, '?select=*.txt;unparsed=yes'))">
+
+        <xsl:variable name="ref"  select="replace(document-uri(), '.*/([a-z0-9-]+)\.txt', '$1')"/>
+        <xsl:variable name="source" select="replace(replace(document-uri(), '/email/text/', '/build/message/'), 'txt', 'xml')"/>
+
+        <input type="radio" name="tabs" id="{$ref}"/>
+
+        <div class="sdk-email">
+         <xsl:variable name="notification" select="document($source)//notification"/>
+          <div class="sdk-email-template">
+            <h1 class="sdk-email-name"><xsl:value-of select="$notification/@template"/></h1>
+          </div>
+          <div class="sdk-email-template">
+            <h2 class="sdk-email-description"><span class="no"><xsl:value-of select="tokenize($ref,'-')[last()]"/></span> <xsl:value-of select="$notification/@description"/></h2>
+          </div>
+          <div class="sdk-email-wrapper">
+            <div class="sdk-email-body">
+              <pre class="sdk-plaintext"><xsl:value-of select="unparsed-text(document-uri(), 'utf-8')"/></pre>
+            </div>
+          </div>
+        </div>
       </xsl:for-each>
     </main>
   </body>
 </html>
-</xsl:template>
-
-
-<xsl:template match="xhtml:html" mode="assemble">
-<xsl:param name="source"/>
-<xsl:param name="ref"/>
-<input type="radio" name="tabs" id="{$ref}"/>
-<div class="sdk-email">
- <xsl:variable name="notification" select="document($source)//notification"/>
-  <div class="sdk-email-template">
-    <h1 class="sdk-email-name"><xsl:value-of select="$notification/@template"/></h1>
-  </div>
-  <div class="sdk-email-template">
-    <h2 class="sdk-email-description"><span class="no"><xsl:value-of select="tokenize($ref,'-')[last()]"/></span> <xsl:value-of select="$notification/@description"/></h2>
-  </div>
-  <xsl:apply-templates select="xhtml:head|xhtml:body" mode="email"/>
-</div>
-</xsl:template>
-
-<!-- Display headers -->
-<xsl:template match="xhtml:head" mode="email">
-<div class="sdk-email-meta">
-  <table>
-    <xsl:for-each select="xhtml:meta[@name]">
-      <tr><th><xsl:value-of select="@name"/></th><td><xsl:value-of select="@content"/></td></tr>
-    </xsl:for-each>
-  </table>
-</div>
-</xsl:template>
-
-<!-- Copy the body -->
-<xsl:template match="xhtml:body" mode="email">
-<div class="sdk-email-wrapper">
-  <xsl:for-each select="../xhtml:head/xhtml:title">
-    <div class="sdk-email-title"><xsl:value-of select="."/></div>
-  </xsl:for-each>
-  <div class="sdk-email-body">
-  <div style="{replace(@style, 'height: 100%', '')}">
-    <xsl:copy-of select="@*[not(name() = 'style')]"/>
-    <xsl:copy-of select="*|text()"/>
-  </div>
-  </div>
-</div>
 </xsl:template>
 
 </xsl:stylesheet>

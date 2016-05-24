@@ -50,30 +50,31 @@ task assembleHTMLEmails(group: 'emails', type: JavaExec, dependsOn: 'generateHTM
   main = 'net.sf.saxon.Transform'
   inputs.dir 'email/html'
   inputs.file 'src/main/xslt/html-assemble.xsl'
-  outputs.file 'email/all.html'
+  outputs.file 'email/emails-html.html'
   def htmlEmailURI = file('email/html').toURI();
   args (
     '-s:src/main/xslt/html-assemble.xsl',
     '-xsl:src/main/xslt/html-assemble.xsl',
-    "-o:email/all.html",
+    "-o:email/emails-html.html",
     "from=$htmlEmailURI"
   )
 }
 
 // Generates the list of message files
-task assembleTextEmails(group: 'emails', dependsOn: 'generateTextEmails') {
+task assembleTextEmails(group: 'emails', type: JavaExec, dependsOn: 'generateTextEmails') {
   description = 'Assembles all the text emails into a single file'
+  classpath = configurations.xslt
+  main = 'net.sf.saxon.Transform'
   inputs.dir 'email/text'
-  outputs.file 'email/all.txt'
-  doLast {
-    String div = '_______________________________________________________________________\n'
-    File srcDir = file('email/text');
-    File out = file('email/all.txt');
-    FileCollection emails = files { srcDir.listFiles() };
-    out.text = emails.collect{
-      div + it.name + '\n' + div + it.getText()
-    }.join('\n');
-  }
+  inputs.file 'src/main/xslt/text-assemble.xsl'
+  outputs.file 'email/emails-text.html'
+  def textEmailURI = file('email/text').toURI();
+  args (
+    '-s:src/main/xslt/text-assemble.xsl',
+    '-xsl:src/main/xslt/text-assemble.xsl',
+    "-o:email/emails-text.html",
+    "from=$textEmailURI"
+  )
 }
 
 // Generate the HTML Emails
