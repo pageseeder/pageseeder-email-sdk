@@ -40,6 +40,7 @@
 
   <p class="last">This link will be valid for the next 12 hours.</p>
 
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 </xsl:stylesheet>

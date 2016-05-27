@@ -44,7 +44,8 @@
 
   <!-- Attachments -->
   <xsl:apply-templates select="message" mode="attachments" />
-  
+
+  <xsl:call-template name="noreply"/>  
 </xsl:template>
 
 

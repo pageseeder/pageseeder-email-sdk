@@ -54,7 +54,7 @@
 
   <!-- Status changed -->
   <xsl:if test="@taskchanged = 'true'">
-    <table class="note"><tr><td>NOTE: The task details above have been changed.</td></tr></table>
+    <table class="note"><tr><td>The task details above have been changed.</td></tr></table>
   </xsl:if>
 
   <!-- Broadcast All -->
@@ -111,9 +111,9 @@
 
 <xsl:template match="notification[@template='new-comment']" mode="footer">
   <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-  <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
-  <p>If you wish to change your notification settings, you can do so by visiting <a
-    href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
+  <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i> group
+  on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>. Manage your ongoing notification 
+  settings using your <a href="{@hosturl}/email/mygroups">subscription options</a>.</p>
 </xsl:template>
 
 

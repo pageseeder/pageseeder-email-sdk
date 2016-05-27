@@ -15,6 +15,11 @@
     <xsl:value-of select="if (membership/@status = 'invited') then 'invitation' else 'registration'"/></title>
 </xsl:template>
 
+<!-- Banner -->
+<xsl:template match="notification[@template='membership-new-member']" mode="banner">
+  <p wrapper-class="membership-wrap">PageSeeder group invitation</p>
+</xsl:template>
+
 <!-- Body content -->
 <xsl:template match="notification[@template='membership-new-member']" mode="body">
   <xsl:variable name="firstname" select="membership/member/@firstname"/>
@@ -42,14 +47,14 @@
 
   <p class="last">This link will be valid for the next 48 hours.</p>
 
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-new-member']" mode="footer">
-  <p>You have received this email because a PageSeeder member created an account for you and 
+  <p>You received this email because a PageSeeder member created an account for you and 
   invited you to join group <i><xsl:value-of select="membership/(group|project)/@name" /></i> on 
   <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
-  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

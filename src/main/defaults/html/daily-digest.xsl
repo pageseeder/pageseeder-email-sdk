@@ -16,6 +16,11 @@
 </xsl:template>
 
 <!-- Body content -->
+<xsl:template match="notification[@template='daily-digest']" mode="banner">
+  <p wrapper-class="digest-wrap">Daily digest for <b><xsl:value-of select="format-date(current-date(), '[D] [MNn] [Y0001]')"/></b></p>
+</xsl:template>
+
+<!-- Body content -->
 <xsl:template match="notification[@template='daily-digest']" mode="body">
   <xsl:apply-templates select="comments" mode="html" />
 </xsl:template>
@@ -25,7 +30,6 @@
 <!-- ===================================================================================== -->
 
 <xsl:template match="comments" mode="html">
-  <p>Here is your daily digest for the <b><xsl:value-of select="format-date(current-date(), '[D] [MNn] [Y0001]')"/></b>.</p>
   <p>The <b><xsl:value-of select="count(comment)"/></b> comments below have been added to 
   the group <i><xsl:value-of select="../group/@name" /></i> in the last 24 hours.</p>
 
@@ -40,7 +44,7 @@
         <xsl:for-each select="current-group()">
           <tr>
             <th><xsl:value-of select="translate(format-dateTime(@created, '[h]:[m01] [PN]'),'.','')"/></th>
-            <td><xsl:value-of select="if (position() = 1) then 'Comment' else 'Reply'"/> by <i><xsl:value-of select="author/fullname" /></i></td>
+            <td><a href="#ps-{@discussionid}-{position()}"><xsl:value-of select="if (position() = 1) then 'Comment' else 'Reply'"/></a> by <i><xsl:value-of select="author/fullname" /></i></td>
           </tr>
         </xsl:for-each>
       </xsl:for-each-group>
@@ -53,7 +57,7 @@
       <xsl:variable name="notification" select="ancestor::notification"/>
       <xsl:variable name="href" select="concat($notification/@hosturl, '/page/', $notification/group/@name, '/comments/', @id)"/>
       <tr>
-        <th class="digest-title"></th>
+        <th class="digest-title"><a name="ps-{@discussionid}-{position()}" id="ps-{@discussionid}-{position()}"/></th>
         <th class="digest-title"><a href="{$notification/@hosturl}/page/{$notification/group/@name}/comments/{@id}"><xsl:value-of select="title" /></a></th>
       </tr>
       <xsl:for-each select="current-group()">
@@ -89,6 +93,8 @@
   </table>
 
   <p class="timezone">Dates and times display for timezone <xsl:value-of select="format-date(current-date(), '[z]')"/></p>
+
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 <!-- ===================================================================================== -->

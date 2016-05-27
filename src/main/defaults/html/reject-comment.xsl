@@ -16,6 +16,11 @@
   <title>RETURNED: <xsl:value-of select="comment/title" /></title>
 </xsl:template>
 
+<!-- Banner -->
+<xsl:template match="notification[@template='reject-comment']" mode="banner">
+  <p wrapper-class="alert-wrap">PageSeeder warning</p>
+</xsl:template>
+
 <!-- Body content -->
 <xsl:template match="notification[@template='reject-comment']" mode="body">
   <p>Hi there,</p>
@@ -24,7 +29,7 @@
   Unfortunately PageSeeder could not accept your message. This could be either because:</p>
 
   <ol>
-    <li>You are not an authorised member of this group.</li>
+    <li>You are not an authorized member of this group.</li>
     <li>You have tried to submit this message from a different email address to the one
     that you were originally registered with.</li>
   </ol>
@@ -38,13 +43,13 @@
     <xsl:with-param name="uri"     select="comment/context/uri" />
   </xsl:call-template>
 
+  <xsl:call-template name="noreply"/>  
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='reject-comment']" mode="footer">
   <p>You received this message because you attempted to post a message on 
   <a href="@hosturl"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
-  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

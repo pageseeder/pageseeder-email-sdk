@@ -16,9 +16,15 @@
   <title>WARNING: Comment limit reached</title>
 </xsl:template>
 
+
+<!-- Banner across the top -->
+<xsl:template match="notification[@template='auto-responder']" mode="banner">
+  <p wrapper-class="alert-wrap">PageSeeder warning</p>
+</xsl:template>
+
 <!-- Body content -->
 <xsl:template match="notification[@template='auto-responder']" mode="body">
-  <table class="warning"><tr><td>WARNING: The location this comment was sent to has almost reached 
+  <table class="warning"><tr><td>The location this comment was sent to has almost reached 
   the maximum allowed within <xsl:value-of select="autoresponder/@minutes" /> minutes.</td></tr></table>
 
   <p>Please wait <b><xsl:value-of select="autoresponder/@minutes" /></b> minutes before 
@@ -35,13 +41,14 @@
         then concat(@hosturl, '/page/', comment/context/group/@name, '/comments')
         else concat(@hosturl, '/page/uri/', comment/context/uri/@id)"/>
   <p>View this comment in <a href="{$link}">context</a>.</p>
+
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='auto-responder']" mode="footer">
   <p>You received this message because the email address <i><xsl:value-of select="comment/author/@email"/></i> was used to
   post a message on <a href="@hosturl"><xsl:value-of select="f:hostname(@hosturl)" /></a>.</p>
-  <p>This is an automatically generated email - please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

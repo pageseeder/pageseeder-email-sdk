@@ -46,6 +46,7 @@
   <!-- Labels -->
   <xsl:apply-templates select="version" mode="labels" />
 
+  <xsl:call-template name="noreply"/>  
 </xsl:template>
 
 <!-- ====================================================================== -->

@@ -73,8 +73,15 @@ a { color: #50A6DD; }
 .security-wrap p {color: #ffffff; margin:0; line-height: 1;}
 .moderation-wrap { width: 100%; background: #f0ec70; margin: 0; padding: 0;}
 .moderation-wrap p {color: #666666; margin:0; line-height: 1;}
+.alert-wrap { width: 100%; background: #ff8e39; margin: 0; padding: 0;}
+.alert-wrap p {color: #000000; margin:0; line-height: 1;}
 .task-wrap { width: 100%; background: #dddddd; margin: 0; padding: 0;}
 .task-wrap span {font-family: 'Helvetica Neue', 'Droid Sans', Helvetica, sans-serif;} 
+.membership-wrap { width: 100%; background: #50A6DD; margin: 0; padding: 0;}
+.membership-wrap p {color: #fff; margin:0; line-height: 1;}
+.digest-wrap { width: 100%; background: #fbe2d9; margin: 0; padding: 0;}
+.digest-wrap p {color: #333; margin:0; line-height: 1;}
+.digest-wrap b {color: #DD4814;}
 
 /* Body */
 .body-wrap { width: 100%;}
@@ -92,7 +99,10 @@ a { color: #50A6DD; }
 
 /* Footer */
 .footer-wrap { width: 100%; clear:both!important; font-family: 'Helvetica Neue', 'Droid Sans', Helvetica, sans-serif; background: #f7f7f7; margin: 0; padding: 0; color: #999}
-.footer-wrap p {font-size:12px; font-weight: bold; color: #999}
+.footer-wrap p {font-size:12px; font-weight: bold; color: #999; }
+
+/* No reply message */
+.noreply {font-size:12px; font-weight: bold; color: #999; margin-top: 21px; margin-bottom: 0}
 
 /* Comments only */
 .type-above { color:#666666; font-family:'Helvetica Neue', 'Droid Sans', Helvetica, sans-serif; font-size:11px; padding:4px; text-align:center;}
@@ -106,8 +116,8 @@ a { color: #50A6DD; }
 /** Digest */
 .digest-summary { margin-bottom: 10px;}
 .digest-summary table {background: #fbe2d9; border: 2px solid #fbe2d9; width:100%;}
-.digest-summary th {padding: 4px; color: #DD4814;}
-.digest-summary td {padding: 4px; color: #000000;}
+.digest-summary th {padding: 4px; color: #DD4814; font-size: 14px;}
+.digest-summary td {padding: 4px; color: #000000; font-size: 14px;}
 .digest-title {vertical-align:top; padding: 6px; color: #000000; font-size: 20px; border-top: 3px solid #ccc; text-align: left; font-weight: normal}
 .digest-time  {vertical-align:top; padding: 3px; color: #DD4814; font-size: 14px; width: 80px}
 .digest-comment {padding-bottom: 10px}

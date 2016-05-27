@@ -34,6 +34,7 @@
   <p>If you didn't change your password, your account might have been 
   compromised and we recommend that you reset your password as soon as possible.</p>
 
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 </xsl:stylesheet>

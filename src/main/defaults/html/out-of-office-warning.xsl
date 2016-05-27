@@ -18,6 +18,11 @@
   <title>WARNING: Out Of Office detected</title>
 </xsl:template>
 
+<!-- Banner -->
+<xsl:template match="notification[@template='out-of-office-warning']" mode="banner">
+  <p wrapper-class="alert-wrap">PageSeeder warning</p>
+</xsl:template>
+
 <!-- Body content -->
 <xsl:template match="notification[@template='out-of-office-warning']" mode="body">
   <table class="warning"><tr><td>The string "<b><xsl:value-of select="f:find-string(outofoffice/@string, comment/title)" /></b>" 
@@ -41,6 +46,7 @@
     <xsl:with-param name="content" select="comment/content[contains(@type,'text/plain')]" />
   </xsl:call-template>
 
+  <xsl:call-template name="noreply"/>  
 </xsl:template>
 
 </xsl:stylesheet>

@@ -17,7 +17,7 @@
 <xsl:variable name="images-url"  select="concat($host-url, '/weborganic/email')" />
 
 <!-- Header image (may need to be modified during testing before images are available on host) -->
-<xsl:variable name="header-image-url"  select="concat($host-url, '/weborganic/email/ps-header-logo.png')" />
+<xsl:variable name="header-image-url"  select="'ps-header-logo.png'" />
 
 <!--
   Default header template
@@ -46,16 +46,22 @@
 <xsl:choose>
   <xsl:when test="group and not(group/@name = 'admin') or comment/context/group">
     <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-    <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>. 
-    If you wish to change your notification settings, you can do so by visiting <a
-      href="{@hosturl}/email/mygroups">your subscription options</a>.</p>
+    <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i> group
+    on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>. Manage your ongoing 
+    notification settings using your <a href="{@hosturl}/email/mygroups">subscription options</a>.</p>
   </xsl:when>
   <xsl:otherwise>
-    <p>This email has been sent to you because you have an account on 
+    <p>You received this message because you have an account on 
     <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
   </xsl:otherwise>
 </xsl:choose>
-<p>This is an automatically generated email - please do not reply to this email.</p>
+</xsl:template>
+
+<!-- 
+  Return the 'DO NOT REPLY' message 
+-->
+<xsl:template name="noreply">
+  <p class="noreply">This is an automatically generated email &#x2013; please do not reply to this email.</p>
 </xsl:template>
 
 </xsl:stylesheet>

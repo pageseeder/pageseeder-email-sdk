@@ -23,8 +23,8 @@
 
   <h3>Hi <xsl:value-of select="moderator/@firstname"/>,</h3>
 
-  <p>The person below would like to join the group <b><xsl:value-of select="membership/(group|project)/@name" /></b>
-  that you are moderating.</p>
+  <p><b><xsl:value-of select="membership/member/fullname" /></b> has requested you let them join the group 
+  <b><xsl:value-of select="membership/(group|project)/@name" /></b></p>
 
   <table style="height:100px;width:100%" border="0" cellpadding="0" cellspacing="0"><tr>
     <td style="vertical-align: top;width:240px">
@@ -57,21 +57,18 @@
     </td>
   </tr></table>
 
-  <h4 style="clear: both">Accept <xsl:value-of select="membership/member/@firstname" />'s request?</h4>
-
   <xsl:sequence select="f:button(concat(@hosturl, '/email/moderatemember?group=', membership/(group|project)/@name, '&amp;member=', membership/member/@id), 'Accept')"/>
 
-  <p class="last">To reject the above request, or to defer your decision, simply ignore this message.</p>
+  <p>Request can be reviewed or deleted permanently at any time from the 'pending members' section 
+  on the <a href="{@hosturl}/page/{membership/(group|project)/@name}/member/list">Members</a> page.</p>
 
-  <p>This request will remain available under the 'Pending'
-     section of the Members page until a time that it is either 'Accepted' or 'Permanently Removed'.</p>
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-accept']" mode="footer">
-  <p>You have been sent this email because you are the moderator of group <i><xsl:value-of select="membership/(group|project)/@name" /></i>
-  on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
-  <p>This is an automatically generated email - please do not reply to this email.</p>
+  <p>You received this message because you are the moderator of the <i><xsl:value-of select="membership/(group|project)/@name" /></i>
+  group on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
 </xsl:template>
 
 </xsl:stylesheet>

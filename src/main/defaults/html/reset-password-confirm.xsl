@@ -51,6 +51,7 @@
     enough you might be able to reuse it.</p>
   </xsl:if>
 
+  <xsl:call-template name="noreply"/>  
 </xsl:template>
 
 </xsl:stylesheet>

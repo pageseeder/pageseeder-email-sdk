@@ -19,7 +19,7 @@
 <!-- Legacy templates are defined here -->
 <xsl:import href="_legacy.xsl"/>
 
-<!-- Legacy templates are defined here -->
+<!-- Custom templates are defined here -->
 <xsl:import href="_custom.xsl"/>
 
 <!-- 

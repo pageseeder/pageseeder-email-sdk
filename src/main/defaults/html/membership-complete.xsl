@@ -14,6 +14,11 @@
   <title>[<xsl:value-of select="membership/(group|project)/@name" />] <xsl:value-of select=" if (membership/project) then 'Project' else 'Group'"/> registration</title>
 </xsl:template>
 
+<!-- Banner -->
+<xsl:template match="notification[@template='membership-complete']" mode="banner">
+  <p wrapper-class="membership-wrap">PageSeeder group registration</p>
+</xsl:template>
+
 <!-- Body content -->
 <xsl:template match="notification[@template='membership-complete']" mode="body">
   <!-- compute the help URL -->
@@ -82,15 +87,16 @@
   <p>The system powering this <xsl:value-of select="$project-group"/>is called PageSeeder.<br/>
   If you are unfamiliar with PageSeeder please follow the link below for an introduction to its features.</p>
   <p><a href="{$helpurl}"><xsl:value-of select="$helpurl" /></a></p>
+  
+  <xsl:call-template name="noreply"/>
 </xsl:template>
 
 <!-- Footer -->
 <xsl:template match="notification[@template='membership-complete']" mode="footer">
   <xsl:variable name="group" select="membership/(group|project)"/>
-  <p>You received this message because you are part of group <i><xsl:value-of select="$group/@name" /></i>.</p>
-  <p>If you wish to change your notification settings, you can do so by visiting <a
-    href="{@hosturl}/email/mygroups">your subscription options</a></p>
-  <p>This is an automatically generated email - please do not reply to this email.</p>
+  <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i>
+   group on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
+  <p>Manage your ongoing  notification settings using your <a href="{@hosturl}/email/mygroups">subscription options</a></p>
 </xsl:template>
 
 </xsl:stylesheet>
