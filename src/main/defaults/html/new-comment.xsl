@@ -47,13 +47,18 @@
 <xsl:template match="notification[@template='new-comment']" mode="body">
   <!-- Document version -->
   <xsl:if test="@modified = 'true'">
-    <table class="note"><tr><td>This <xsl:value-of select="if (empty(comment/@status)) then 'comment' else 'task'"/> 
-    has been modified.</td></tr></table>
+    <table class="note"><tr>
+      <td>This <xsl:value-of select="if (empty(comment/@status)) then 'comment' else 'task'"/> has been modified.</td>
+      <td class="text-right"><xsl:for-each select="comment/author">Original author: <b><xsl:value-of select="fullname"/></b></xsl:for-each></td>
+    </tr></table>
   </xsl:if>
 
   <!-- Status changed -->
   <xsl:if test="@taskchanged = 'true'">
-    <table class="note"><tr><td>The task details above have been changed.</td></tr></table>
+    <table class="note"><tr>
+      <td>The task details above have been changed.</td>
+      <td class="text-right"><xsl:for-each select="comment/author">Original author: <b><xsl:value-of select="fullname"/></b></xsl:for-each></td>
+    </tr></table>
   </xsl:if>
 
   <!-- Broadcast All -->
