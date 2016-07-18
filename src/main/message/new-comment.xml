@@ -22,7 +22,15 @@
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
         <fullname>John Jones</fullname>
       </author>
-      <content type="text/plain">Sesame opened the door</content>
+      <content type="text/plain">Sesame opened the door and found: gold, silver, jewels</content>
+      <content type="application/xhtml+xml">
+        <p>Sesame opened the <b>door</b> and found:</p>
+        <ul>
+          <li>gold,</li>
+          <li>silver,</li>
+          <li>jewels.</li>
+        </ul>
+      </content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -43,6 +51,7 @@
         <fullname>Sally Jones</fullname>
       </author>
       <content type="text/plain">What was inside?</content>
+      <content type="application/xhtml+xml"><p>What was inside?</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -63,6 +72,7 @@
         <fullname>John Jones</fullname>
       </author>
       <content type="text/plain">Sesame opened the door</content>
+      <content type="application/xhtml+xml"><p>Sesame opened the door</p></content>
       <attachment>
         <uri id="456" scheme="http" host="www.my-host.com" port="80" path="/ps/project/group/folder/file.psml"
            decodedpath="/ps/project/group/folder/file.psml" external="false"
@@ -100,6 +110,7 @@
         <fullname>John Jones</fullname>
       </author>
       <content type="text/plain">Sesame opened the door</content>
+      <content type="application/xhtml+xml"><p>Sesame opened the door</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -124,6 +135,7 @@
         <fullname>Jack Johnson</fullname>
       </assignedto>
       <content type="text/plain">Sesame opened the door</content>
+      <content type="application/xhtml+xml"><p>Sesame opened the door</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -148,6 +160,7 @@
         <fullname>Jack Johnson</fullname>
       </assignedto>
       <content type="text/plain">Sesame opened the door</content>
+      <content type="application/xhtml+xml"><p>Sesame opened the door</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -172,6 +185,7 @@
         <fullname>Bill Abong</fullname>
       </assignedto>
       <content type="text/plain">Getting started on this document.</content>
+      <content type="application/xhtml+xml"><p>Getting started on this document.</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -244,6 +258,49 @@ Vestes domus ne dictis cultrosque, grandine, gerebat acta amor nec? Ille tertia
 requiem et omnibus ictus. Est inde illum portasque iuvenali nostra, in in caput
 semihomines? Nec concrescere, mediis neque vocem demum fusus **Cereris** dicebat
 Zephyro Cocinthia formosae.</content>
+<content type="application/xhtml+xml">
+  <h1>Non Hersilie</h1>
+  <h2>Loqui suis partem</h2>
+  <p>Lorem markdownum praevitiat moenia vexant corpora laborent in caelo: ut mihi. 
+  Dubitare Perseia, Iovis tinguat nil fateri, tulit divum lactantiaque, circumdare 
+  <a href="http://hipstermerkel.tumblr.com/">ignibus</a>. 
+  Album ecce secedere inguina expulit terra terribiles puppe. Ille ipsius ultra gaudia: 
+  stipulis, pondere tonsa, inopem, nexaque felix fraternis villae, iacebitis. 
+  Deae mihi propior, paucaque lacrimas: terrae radiis obstante petunt telluris.</p>
+  <h2>Et pro sis omen fervebat templa</h2>
+  <p>Non res inridet ortus deorum, eadem alti, me longo in telluris, aptius iam. Mundum sensit vocem pariter tempus.</p>
+  <ul>
+    <li>Os huc Pentheus proditione amans</li>
+    <li>Monstro quantaque placidi pictam Achaemeniden thalamos tamen</li>
+    <li>Hamatisque ille</li>
+    <li>Guttae non igitur</li>
+    <li>Ferret spernimus fallaci corpus et excusare obruta</li>
+  </ul>
+  <h2>Ipsa auras animae imago recidendum nostra est</h2>
+  <p>Cum cum corpora fuit fuge est, se quis ingemuit? Famae parentem victa conplexaque 
+  sororis frustra vocat me mihi quam misit quibus Eurynome fatis.</p>
+  <p>Coniugium indigenas fugit; tuum quoque, aliter hic parenti dixi prudens tuas formae 
+  iussaque, mecum? Si semine more cursus facitote pervenit ornant, terram Iuno in ulla; 
+  terra Cadmeida. Ennomon posset [laure ora<br xmlns="http://www.w3.org/1999/xhtml" />tua](<a href="http://www.lipsum.com/">http://www.lipsum.com/</a>), 
+  excutit me inmissos quibus. <em>Terram</em> in abdita Lavini.</p>
+  <h2>Nec saxa exerces sibi favus obsistitur manebit</h2>
+  <p>Exuit haec oravique, sinamus facientibus praeterea hoc multi corona, inclusum pars 
+  <strong>nox pavere</strong> medullis fovet includit salientia <em>omnia</em>. 
+  Desperat de poenas Aurora, duo verba speciem in dedere, te illa Phoebeius Parthaone. 
+  Neque iura simulacra exhausta gente prospectat frondes mandate moverat neu cernit domitis 
+  baculumque ingemuit cernit.</p>
+  <blockquote>
+    <p> Isto nitentibus <em>modum</em>; 
+    referitur verba radiantia nitidam intrat, tenebras,  gestamina posse iuvencos. 
+    Laesum naturaeque credita conplevit memini quoque  meritam manes: artes per cura cara moverat? 
+    Sonuit sperabam <em>sentiet</em> modo  commissaque meae dederat cognita 
+    <a href="http://hipstermerkel.tumblr.com/">sucis det  meruit</a> et laetum nec contendere, 
+    bracchia  pecorum. Celat obortis quem, utrumque aras: solent caput, revocataque puer.</p>
+  </blockquote>
+  <p>Vestes domus ne dictis cultrosque, grandine, gerebat acta amor nec? Ille tertia requiem 
+  et omnibus ictus. Est inde illum portasque iuvenali nostra, in in caput semihomines? 
+  Nec concrescere, mediis neque vocem demum fusus <strong>Cereris</strong> dicebat Zephyro Cocinthia formosae.</p>
+  </content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -268,6 +325,7 @@ Zephyro Cocinthia formosae.</content>
         <fullname>Peter Thompson</fullname>
       </modifiedby>
       <content type="text/plain">Sesame re-opened the door</content>
+      <content type="application/xhtml+xml"><p>Sesame re-opened the door</p></content>
       <context>
         <group id="3" name="acme-test" />
       </context>
@@ -291,11 +349,11 @@ Zephyro Cocinthia formosae.</content>
       <author id="12" firstname="John" surname="Jones" email="jjones@example.org" username="jjones">
         <fullname>John Jones</fullname>
       </author>
+      <content type="text/plain">Attention! Sesame opened the door</content>
       <content type="application/xhtml+xml">
         <h2>Attention!</h2>
         <p>Sesame <b>opened</b> the door!</p>
       </content>
-      <content type="text/plain">Sesame opened the door</content>
       <context>
         <group id="3" name="acme-test" />
       </context>
