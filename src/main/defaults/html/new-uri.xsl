@@ -9,7 +9,6 @@
                 exclude-result-prefixes="#all">
 
 <xsl:import href="_frame.xsl"/>
-<xsl:import href="_markdown.xsl"/>
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-uri']" mode="meta">
@@ -34,10 +33,9 @@
     <table class="announcement"><tr><td>This email has been sent to you regardless of your 
     PageSeeder notification settings because it is an announcement.</td></tr></table>
   </xsl:if>
+  
   <!-- Contents -->
-  <p>
-    <xsl:sequence select="f:markdown(message/content/text())" />
-  </p>
+  <xsl:copy-of select="message/content[@type = 'application/xhtml+xml']/node()" />
 
   <!-- Labels -->
   <xsl:apply-templates select="message" mode="labels" />

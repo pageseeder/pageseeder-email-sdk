@@ -42,9 +42,10 @@
           <td><b><xsl:value-of select="title" /></b></td>
         </tr>
         <xsl:for-each select="current-group()">
+          <xsl:sort select="@created" order="descending"/>
           <tr>
             <th><xsl:value-of select="translate(format-dateTime(@created, '[h]:[m01] [PN]'),'.','')"/></th>
-            <td><a href="#ps-{@discussionid}-{position()}"><xsl:value-of select="if (position() = 1) then 'Comment' else 'Reply'"/></a> by <i><xsl:value-of select="author/fullname" /></i></td>
+            <td><a href="#ps-{@discussionid}-{position()}"><xsl:value-of select="if (position() = last()) then 'Comment' else 'Reply'"/></a> by <i><xsl:value-of select="author/fullname" /></i></td>
           </tr>
         </xsl:for-each>
       </xsl:for-each-group>
@@ -61,6 +62,7 @@
         <th class="digest-title"><a href="{$notification/@hosturl}/page/{$notification/group/@name}/comments/{@id}"><xsl:value-of select="title" /></a></th>
       </tr>
       <xsl:for-each select="current-group()">
+        <xsl:sort select="@created" order="descending"/>
         <tr>
           <th class="digest-time"><xsl:value-of select="format-dateTime(@created, '[h]:[m01]')"/>
           <div class="ampm"><xsl:value-of select="translate(format-dateTime(@created, '[PN]'), '.','')"/></div></th>
@@ -132,10 +134,7 @@
       </tr>
       <tr>
         <td class="digest-content">
-          <xsl:analyze-string select="content[contains(@type,'text/plain')]" regex="\n" flags="m">
-            <xsl:matching-substring><br/></xsl:matching-substring>
-            <xsl:non-matching-substring><xsl:value-of select="." /></xsl:non-matching-substring>
-          </xsl:analyze-string>
+          <xsl:copy-of select="content[@type = 'application/xhtml+xml']/node()" />
         </td>
       </tr>
 

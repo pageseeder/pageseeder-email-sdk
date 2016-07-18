@@ -11,7 +11,6 @@
                 exclude-result-prefixes="#all">
 
 <xsl:import href="_frame.xsl"/>
-<xsl:import href="_markdown.xsl"/>
 
 <!-- Subject and metadata -->
 <xsl:template match="notification[@template='new-comment']" mode="meta">
@@ -70,19 +69,7 @@
   <xsl:apply-templates select="recipients" />
 
   <!-- Contents -->
-  <xsl:choose>
-    <!-- is there XHTML content? -->
-    <xsl:when test="comment/content[@type = 'application/xhtml+xml']">
-      <xsl:copy-of select="comment/content[@type = 'application/xhtml+xml']/node()" />
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:for-each select="comment/content[contains(@type,'text/plain')]">
-        <xsl:sort select="id" />
-        <xsl:sequence select="f:markdown(text())" />
-      </xsl:for-each>
-
-    </xsl:otherwise>
-  </xsl:choose>
+  <xsl:copy-of select="comment/content[@type = 'application/xhtml+xml']/node()" />
 
   <!-- Labels -->
   <xsl:apply-templates select="comment" mode="labels" />
