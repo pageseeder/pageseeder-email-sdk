@@ -96,7 +96,8 @@
   <xsl:variable name="group" select="membership/(group|project)"/>
   <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i>
    group on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>.</p>
-  <p>Manage your ongoing  notification settings using your <a href="{@hosturl}/email/mygroups">subscription options</a></p>
+  <p>Manage your ongoing  notification settings using your <a href="{@hosturl}/email/mygroups">group options</a>
+    or <a href="{@hosturl}/email/unsubscribe?group={$group/@name}&amp;token={@unsubscribetoken}">unsubscribe</a> from this group.</p>
 </xsl:template>
 
 </xsl:stylesheet>

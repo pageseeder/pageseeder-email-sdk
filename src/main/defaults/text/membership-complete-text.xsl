@@ -50,11 +50,10 @@ NOTE: You may need to logout from PageSeeder and login again to gain access.
                  the link below for an introduction to its features.
                  <xsl:value-of select="$helpurl"/>
 
-To change your notification settings please visit:
-  <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
-  
 -----------------------------------------------------------------------
-This email has been sent to you because you have an account on <xsl:value-of select="concat(@hosturl, '/')"/>
+You received this message because you are part of group <xsl:value-of select="membership/group/@name"/>.
+If you wish to change your notification settings, you can do so by visiting the unsubscribe page
+  <xsl:value-of select="concat(@hosturl, '/email/unsubscribe?group=', membership/(group|project)/@name, '&amp;token=', @unsubscribetoken)" />
 
 This is an automatically generated email - please do not reply to this email.
 </xsl:template>

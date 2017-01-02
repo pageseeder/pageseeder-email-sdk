@@ -33,6 +33,7 @@ body {
 table { border-spacing: 0; border-collapse: collapse; padding: 0; vertical-align: top; text-align: left; }
 td { word-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important; padding: 0; vertical-align: top; text-align: left; font-family: 'Helvetica Neue', 'Droid Sans', Helvetica, sans-serif;}
 th { word-break: break-word; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none; border-collapse: collapse !important; padding: 0; vertical-align: top; font-family: 'Helvetica Neue', 'Droid Sans', Helvetica, sans-serif;}
+.text-right {text-align: right !important;}
 
 /* Images */
 img { outline:none; text-decoration:none; -ms-interpolation-mode: bicubic; width: auto; max-width: 100%; border: none;}

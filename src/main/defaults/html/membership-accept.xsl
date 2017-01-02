@@ -40,7 +40,7 @@
       </xsl:call-template>
     </td>
     <td style="vertical-align: top;width: 90px">
-      <img src="{$images-url}/arrow.png;" border="0" />
+      <img src="{$images-url}/arrow.png" border="0" />
     </td>
     <td style="vertical-align: top;width:240px">
       <xsl:call-template name="table">

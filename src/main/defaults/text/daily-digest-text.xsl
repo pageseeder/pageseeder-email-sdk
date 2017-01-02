@@ -3,10 +3,13 @@
   Template used for the daily digest notification
 -->
 <xsl:stylesheet version="2.0"
+                xmlns:f="http://www.pageseeder.com/function"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:psf="http://www.pageseeder.com/function"
                 exclude-result-prefixes="xs psf">
+                
+<xsl:import href="_text.xsl"/>
 
 <xsl:template match="/notification[@template='daily-digest']">
   <xsl:text>THESE COMMENTS HAVE BEEN ADDED TO GROUP </xsl:text>
@@ -79,11 +82,7 @@ VIEW/DOWNLOAD:
 
 </xsl:text>
     </xsl:if>
-    <xsl:for-each select="content">
-      <xsl:value-of select="." />
-      <xsl:text>
-</xsl:text>
-    </xsl:for-each>
+    <xsl:value-of select="f:comment-content(.)"/>
     <xsl:text>
 -----------------------------------------------------------------------
 </xsl:text>
@@ -125,8 +124,8 @@ REPLY - via email:
   
 ----------------------------------------------------------------------
 You received this message because you are part of group <xsl:value-of select="group/@name"/>.
-If you wish to change your notification settings, you can do so by visiting your subscription options
-  <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
+If you wish to change your notification settings, you can do so by visiting the unsubscribe page
+  <xsl:value-of select="concat(@hosturl, '/email/unsubscribe?group=', group/@name, '&amp;token=', @unsubscribetoken)" />
 
 </xsl:template>
 

@@ -19,7 +19,7 @@
   <meta name="list-id"            content="{group/@name}.{@emaildomain}" />
   <meta name="list-name"          content="{group/@description}" />
   <meta name="list-help"          content="{@hosturl}/page/{group/@name}/home" />
-  <meta name="list-unsubscribe"   content="{@hosturl}/email/mygroups" />
+  <meta name="list-unsubscribe"   content="{@hosturl}/email/unsubscribe?group={group/@name}&amp;token={@unsubscribetoken}" />
   <meta name="list-post"          content="{@hosturl}/page/{group/@name}/comment/new" />
   <meta name="list-archive"       content="{@hosturl}/page/{group/@name}/comments" />
   <meta name="message-id"         content="{comment/@id}.comment@{@emaildomain}" />
@@ -99,15 +99,6 @@
     <p class="timezone">Dates and times display for timezone <xsl:value-of select="format-date(current-date(), '[z]')"/></p>
   </xsl:if>
 </xsl:template>
-
-
-<xsl:template match="notification[@template='new-comment']" mode="footer">
-  <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-  <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i> group
-  on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>. Manage your ongoing notification 
-  settings using your <a href="{@hosturl}/email/mygroups">subscription options</a>.</p>
-</xsl:template>
-
 
 <!-- ====================================================================== -->
 <!-- Supporting templates -->

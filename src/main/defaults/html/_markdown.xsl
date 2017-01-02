@@ -21,6 +21,8 @@
 
   @param text the plain text to enhance.
   
+  @deprecated markdown conversion is done by java now
+  
   @return the HTML formatted equivalent
 -->
 <xsl:function name="f:markdown">

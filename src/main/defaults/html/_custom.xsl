@@ -17,7 +17,7 @@
 <xsl:variable name="images-url"  select="concat($host-url, '/weborganic/email')" />
 
 <!-- Header image (may need to be modified during testing before images are available on host) -->
-<xsl:variable name="header-image-url"  select="'ps-header-logo.png'" />
+<xsl:variable name="header-image-url"  select="concat($images-url,'/ps-header-logo.png')" />
 
 <!--
   Default header template
@@ -44,11 +44,11 @@
 -->
 <xsl:template match="notification" mode="footer">
 <xsl:choose>
-  <xsl:when test="group and not(group/@name = 'admin') or comment/context/group">
-    <xsl:variable name="group" select="if (group) then group else (comment/context/group)[1]"/>
-    <p>You received this message because you are part of the <i><xsl:value-of select="$group/@name" /></i> group
+  <xsl:when test="group and group/@name != 'admin'">
+    <p>You received this message because you are part of the <i><xsl:value-of select="group/@name" /></i> group
     on <a href="{@hosturl}"><xsl:value-of select="f:hostname(@hosturl)"/></a>. Manage your ongoing 
-    notification settings using your <a href="{@hosturl}/email/mygroups">subscription options</a>.</p>
+    notification settings using your <a href="{@hosturl}/email/mygroups">group options</a>
+    or <a href="{@hosturl}/email/unsubscribe?group={group/@name}&amp;token={@unsubscribetoken}">unsubscribe</a> from this group.</p>
   </xsl:when>
   <xsl:otherwise>
     <p>You received this message because you have an account on 

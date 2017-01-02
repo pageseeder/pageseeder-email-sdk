@@ -22,6 +22,10 @@ Unfortunately PageSeeder could not accept your message. This could be either bec
 
 2) You have tried to submit this message from a different email address to the one that you were originally registered with.
 
+3) You have used --announce in the email address and you are not a group contributor.
+
+4) You have used --preserve in the email address and you are not a group manager.
+
 If you would like to change the email address you use for PageSeeder to *<xsl:value-of select="comment/author/@email" />*, follow the link below:
   <xsl:value-of select="concat(@hosturl, '/email/mydetails')"/>
 

@@ -32,6 +32,8 @@
     <li>You are not an authorized member of this group.</li>
     <li>You have tried to submit this message from a different email address to the one
     that you were originally registered with.</li>
+    <li>You have used --announce in the email address and you are not a group contributor.</li>
+    <li>You have used --preserve in the email address and you are not a group manager.</li>
   </ol>
 
   <p>If you would like to change the email address you use for PageSeeder to <b><xsl:value-of select="comment/author/@email" /></b>, 

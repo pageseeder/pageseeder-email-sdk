@@ -29,12 +29,12 @@ VIEW/DOWNLOAD:
 </xsl:for-each>
 ----------------------------------------------------------------------
 
-<xsl:value-of select="message/content" />
+<xsl:value-of select="message/content[contains(@type,'text/plain')]" />
 
 ----------------------------------------------------------------------
 You received this message because you are part of group <xsl:value-of select="group/@name"/>.
-If you wish to change your notification settings, you can do so by visiting your subscription options
-  <xsl:value-of select="concat(@hosturl, '/email/mygroups')" />
+If you wish to change your notification settings, you can do so by visiting the unsubscribe page
+  <xsl:value-of select="concat(@hosturl, '/email/unsubscribe?group=', group/@name, '&amp;token=', @unsubscribetoken)" />
 
 This is an automatically generated email - please do not reply to this email.
 </xsl:template>
